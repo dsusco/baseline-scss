@@ -14,3 +14,19 @@
     content: $content;
   }
 }
+
+@mixin font-awesome-before($content: '') {
+  &::before {
+    content: $content;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: inherit;
+    font-family: FontAwesome;
+    line-height: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

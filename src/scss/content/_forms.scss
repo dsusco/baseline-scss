@@ -1,0 +1,28 @@
+form {
+  margin: 0 0 $_;
+}
+
+label {
+  margin: 0 0 $_;
+  width: 100%;
+}
+
+#{$all-text-inputs},
+select {
+  background: $_body_background;
+  border: .1rem solid $_color_light;
+  border-radius: .4rem;
+  display: block;
+  padding: (($_ / 2) - .1rem) 1rem;
+  width: 100%;
+
+  &.disabled,
+  &[disabled] {
+    background: $_color_lighter;
+    cursor: default;
+  }
+}
+
+select {
+  @include _($_font_size - .1rem);
+}

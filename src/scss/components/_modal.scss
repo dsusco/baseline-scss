@@ -1,15 +1,18 @@
 .modal {
   @include grid-column(4);
-  @include position(fixed, 25% auto);
+  @include position(fixed, 14rem 0);
 
+  border-radius: .4rem;
   margin: 0 auto;
+  text-align: center;
   z-index: 1;
 
   .modal-header {
     @include _($_font_size_large);
+    @include border-top-radius(.4rem);
 
     background: $_body_background;
-    padding: ($_ / 2) 4rem ($_ / 2) map-get($neat-grid, gutter);
+    padding: ($_ / 2) 4rem;
 
     .close {
       @include position(absolute, 0 0 auto auto);
@@ -27,7 +30,7 @@
   }
 
   .modal-body {
-    @include font-awesome-before('\f110');
+    @include border-bottom-radius(.4rem);
 
     background: $_body_background;
     max-height: 100%;
@@ -37,10 +40,17 @@
     position: relative;
 
     &::before {
+      @include font-awesome('\f110');
       @include prefixer(animation, fa-spin 2s infinite linear, ('webkit'));
 
       position: absolute;
       left: calc(50% - #{$_font_size / 2});
+    }
+
+    img {
+      max-width: 100%;
+      position: relative;
+      z-index: 1;
     }
   }
 
@@ -48,10 +58,6 @@
     @include grid-column(10);
 
     margin: 0 auto;
-
-    .modal-header {
-      padding-left: map-get($md-neat-grid, gutter);
-    }
 
     .modal-body {
       padding: $_ map-get($md-neat-grid, gutter);
@@ -67,10 +73,6 @@
 
     margin: 0 auto;
 
-    .modal-header {
-      padding-left: map-get($lg-neat-grid, gutter);
-    }
-
     .modal-body {
       @include padding(null map-get($lg-neat-grid, gutter));
     }
@@ -80,10 +82,6 @@
     @include grid-column(7);
 
     margin: 0 auto;
-
-    .modal-header {
-      padding-left: map-get($xl-neat-grid, gutter);
-    }
 
     .modal-body {
       @include padding(null map-get($xl-neat-grid, gutter));

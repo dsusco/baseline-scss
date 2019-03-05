@@ -1,0 +1,31 @@
+.button,
+#{$all-buttons} {
+  background-image: linear-gradient(lighten($_color_light, 25%), lighten($_color_light, 12.5%));
+  border: .1rem solid $_color_light;
+  border-radius: .4rem;
+  cursor: pointer;
+  display: inline-block;
+  padding: (($_ / 2) - .1rem) 1rem;
+  vertical-align: bottom;
+
+  &:focus,
+  &:hover {
+    background-image: linear-gradient(lighten($_color_light, 25%), lighten($_color_light, 6.25%));
+  }
+
+  &.outline {
+    background: $_body_background;
+  }
+
+  &.small {
+    @include _($_font_size_small);
+    @include margin(($_ / 4) null);
+
+    padding: (($_ / 4) - .1rem) .5rem;
+  }
+
+  &.disabled,
+  &[disabled] {
+    pointer-events: none;
+  }
+}

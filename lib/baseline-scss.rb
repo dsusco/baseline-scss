@@ -1,4 +1,7 @@
 require 'sass'
+require 'normalize-scss'
+require 'bourbon'
+require 'neat'
 
 module BaselineScss
   if defined?(Rails) && defined?(Rails::Engine)

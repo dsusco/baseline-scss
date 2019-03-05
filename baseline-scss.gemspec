@@ -16,8 +16,8 @@ Gem::Specification.new do |s|
   s.metadata = {
   }
 
-  s.add_runtime_dependency('sass', '~> 3.7.2')
-  s.add_runtime_dependency('normalize-scss', '~> 7.0.1')
-  s.add_runtime_dependency('bourbon', '~> 5.1.0')
-  s.add_runtime_dependency('neat', '~> 3.0.1')
+  s.add_runtime_dependency('sass', '~> 3.7', '>= 3.7.2')
+  s.add_runtime_dependency('normalize-scss', '~> 7.0', '>= 7.0.1')
+  s.add_runtime_dependency('bourbon', '~> 5.1', '>= 5.1.0')
+  s.add_runtime_dependency('neat', '~> 3.0', '>= 3.0.1')
 end

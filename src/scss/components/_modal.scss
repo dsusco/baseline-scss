@@ -37,20 +37,17 @@
     min-height: 3 * $_;
     overflow-y: auto;
     padding: ($_ / 2) map-get($neat-grid, gutter);
-    position: relative;
 
-    &::before {
-      @include font-awesome('\f110');
-      @include prefixer(animation, fa-spin 2s infinite linear, ('webkit'));
-
-      position: absolute;
-      left: calc(50% - #{$_font_size / 2});
-    }
-
-    img {
-      max-width: 100%;
+    &:empty {
       position: relative;
-      z-index: 1;
+
+      &::before {
+        @include font-awesome('\f110');
+        @include prefixer(animation, fa-spin 2s infinite linear, ('webkit'));
+
+        position: absolute;
+        left: calc(50% - #{$_font_size / 2});
+      }
     }
   }
 

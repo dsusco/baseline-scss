@@ -25,4 +25,6 @@ select {
 
 select {
   @include _($_font_size - .1rem);
+
+  color: inherit;
 }

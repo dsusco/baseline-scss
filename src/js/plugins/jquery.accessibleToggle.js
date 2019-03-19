@@ -7,8 +7,24 @@ jQuery.fn.extend({
           hidingAnimation: false,
           showingAnimation: false
         }, $toggle.data(), accessibleToggleOptions),
-        $control = $(options.control),
-        $parent = $(options.parent).first();
+        $control,
+        $parent;
+
+      try {
+        $control = $(options.control);
+      } catch (e) {
+        if (options.control.charAt(0) === '#') {
+          $control = $(document.getElementById(options.control.substr(1)));
+        }
+      }
+
+      try {
+        $parent = $(options.parent).first()
+      } catch (e) {
+        if (options.parent.charAt(0) === '#') {
+          $parent = $(document.getElementById(options.parent.substr(1)));
+        }
+      }
 
       function hide (event = null, extraParameters = {}) {
         var ariaLabelledby = '';
@@ -25,7 +41,9 @@ jQuery.fn.extend({
 
           try {
             // update all controls
-            ariaLabelledby = $('#' + $toggle.attr('aria-labelledby').split(' ').join(', #'))
+            ariaLabelledby = $($toggle.attr('aria-labelledby').split(' ').map(function (id) {
+                return document.getElementById(id);
+              }))
               .removeClass('shown-toggle')
               .addClass('hidden-toggle')
               .attr('aria-expanded', false)
@@ -72,13 +90,15 @@ jQuery.fn.extend({
 
           try {
             // if a parent is defined, hide all other toggles in it
-            $($parent.data('accessible-toggle-children').join(',')).not($toggle)
+            $($parent.data('accessible-toggle-children')).not($toggle)
               .trigger('accessibleToggle:hide.baseline', { stopPropagation: true });
           } catch (ignore) {}
 
           try {
             // update all controls
-            ariaLabelledby = $('#' + $toggle.attr('aria-labelledby').split(' ').join(', #'))
+            ariaLabelledby = $($toggle.attr('aria-labelledby').split(' ').map(function (id) {
+                return document.getElementById(id);
+              }))
               .removeClass('hidden-toggle')
               .addClass('shown-toggle')
               .attr('aria-expanded', true)
@@ -127,7 +147,7 @@ jQuery.fn.extend({
         .prop('disabled', false);
 
       $parent
-        .data('accessible-toggle-children', ($parent.data('accessible-toggle-children') || []).concat('#' + $toggle.attr('id')));
+        .data('accessible-toggle-children', ($parent.data('accessible-toggle-children') || []).concat(document.getElementById($toggle.attr('id'))));
 
       $toggle
         .attr('aria-labelledby', function (index, attr) {

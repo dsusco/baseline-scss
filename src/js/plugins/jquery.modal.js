@@ -9,8 +9,24 @@ jQuery.fn.extend({
           openingAnimation: false,
           parent: 'body > div:first-of-type'
         }, $modal.data(), modalOptions),
-        $control = $(options.control),
-        $parent = $(options.parent).first();
+        $control,
+        $parent;
+
+      try {
+        $control = $(options.control);
+      } catch (e) {
+        if (options.control.charAt(0) === '#') {
+          $control = $(document.getElementById(options.control.substr(1)));
+        }
+      }
+
+      try {
+        $parent = $(options.parent).first()
+      } catch (e) {
+        if (options.parent.charAt(0) === '#') {
+          $parent = $(document.getElementById(options.parent.substr(1)));
+        }
+      }
 
       // if no div is present, use the body
       if (!$parent.length) {
@@ -37,7 +53,9 @@ jQuery.fn.extend({
 
           try {
             // update all controls
-            ariaLabelledby = $('#' + $modal.attr('aria-labelledby').split(' ').join(', #'))
+            ariaLabelledby = $($modal.attr('aria-labelledby').split(' ').map(function (id) {
+                return document.getElementById(id);
+              }))
               .removeClass('opened')
               .addClass('closed')
               .attr('aria-expanded', false)
@@ -124,7 +142,9 @@ jQuery.fn.extend({
 
           try {
             // update all controls
-            ariaLabelledby = $('#' + $modal.attr('aria-labelledby').split(' ').join(', #'))
+            ariaLabelledby = $($modal.attr('aria-labelledby').split(' ').map(function (id) {
+                return document.getElementById(id);
+              }))
               .removeClass('closed')
               .addClass('opened')
               .attr('aria-expanded', true)

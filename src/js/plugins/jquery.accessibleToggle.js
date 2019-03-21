@@ -35,6 +35,8 @@ jQuery.fn.extend({
             .addClass('hiding')
             .trigger('accessibleToggle:hiding');
 
+          $control.addClass('hiding-toggle');
+
           if ($toggle.is(':visible') && options.hidingAnimation) {
             $toggle.animateCss(options.hidingAnimation);
           }
@@ -69,6 +71,8 @@ jQuery.fn.extend({
       }
 
       function hideToggle () {
+        $control.removeClass('hiding-toggle');
+
         $toggle
           .prop('hidden', true)
           .removeClass('hiding')
@@ -83,6 +87,8 @@ jQuery.fn.extend({
           $toggle
             .addClass('showing')
             .trigger('accessibleToggle:showing');
+
+          $control.addClass('showing-toggle');
 
           if ($toggle.is(':hidden') && options.showingAnimation) {
             $toggle.animateCss(options.showingAnimation);
@@ -108,17 +114,29 @@ jQuery.fn.extend({
           } catch (ignore) {}
 
           // remove controls that are no longer on the page
-          $toggle.attr('aria-labelledby', ariaLabelledby.trim());
-
           $toggle
-            .prop('hidden', false)
-            .removeClass('showing')
-            .trigger('accessibleToggle:shown');
+            .attr('aria-labelledby', ariaLabelledby.trim())
+            .prop('hidden', false);
+
+          if ($toggle.hasEvent('animationend')) {
+            // if there's an animation, let it complete before triggering the shown event
+            $toggle.one('animationend', showToggle);
+          } else {
+            showToggle();
+          }
 
           if (extraParameters.stopPropagation === true) {
             event.stopPropagation();
           }
         }
+      }
+
+      function showToggle () {
+        $control.removeClass('showing-toggle');
+
+        $toggle
+          .removeClass('showing')
+          .trigger('accessibleToggle:shown');
       }
 
       function toggleClick (event) {
@@ -131,6 +149,7 @@ jQuery.fn.extend({
 
       $control
         .id('accessible_toggle_control')
+        .addClass('accessible-toggle-control')
         .attr('aria-controls', function (index, attr) {
           try {
             attr = attr.split(' ')

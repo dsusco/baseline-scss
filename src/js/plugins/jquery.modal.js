@@ -42,6 +42,8 @@ jQuery.fn.extend({
             .addClass('closing')
             .trigger('modal:closing');
 
+          $control.addClass('closing-toggle');
+
           // add an animation if this isn't the intial close and the modal is opened
           if (event !== undefined && $modal.is(':visible') && options.closingAnimation) {
             $modal.animateCss(options.closingAnimation);
@@ -69,11 +71,35 @@ jQuery.fn.extend({
 
           if ($modal.hasEvent('animationend')) {
             // if there's an animation, let it complete before hiding the modal
-            $modal.one('animationend', hideModal);
+            $modal.one('animationend', closeModal);
           } else {
-            hideModal();
+            closeModal();
           }
         }
+      }
+
+      function closeModal () {
+        $modal.prop('hidden', true);
+
+        // allow focus again on non-modal elements
+        $('[data-tabindex]')
+          .each(function () {
+            var $el = $(this);
+
+            $el
+              .attr('tabindex', eval($el.attr('data-tabindex')))
+              .attr('data-tabindex', null);
+          });
+
+        $parent.removeClass('modal-overlay');
+
+        $($modal.data('last-focus')).focus();
+
+        $control.removeClass('closing-toggle');
+
+        $modal
+          .removeClass('closing')
+          .trigger('modal:closed');
       }
 
       function closeOnEsc (event) {
@@ -94,28 +120,6 @@ jQuery.fn.extend({
         }
       }
 
-      function hideModal () {
-        $modal.prop('hidden', true);
-
-        // allow focus again on non-modal elements
-        $('[data-tabindex]')
-          .each(function () {
-            var $el = $(this);
-
-            $el
-              .attr('tabindex', eval($el.attr('data-tabindex')))
-              .attr('data-tabindex', null);
-          });
-
-        $parent.removeClass('modal-overlay');
-
-        $($modal.data('last-focus')).focus();
-
-        $modal
-          .removeClass('closing')
-          .trigger('modal:closed');
-      }
-
       function open (event) {
         var
           $document = $(document),
@@ -126,6 +130,8 @@ jQuery.fn.extend({
           $modal
             .addClass('opening')
             .trigger('modal:opening');
+
+          $control.addClass('opening-toggle');
 
           // add an animation if this isn't the intial open and the modal is closed
           if (event !== undefined && $modal.is(':hidden') && options.openingAnimation) {
@@ -176,17 +182,19 @@ jQuery.fn.extend({
 
           if ($modal.hasEvent('animationend')) {
             // if there's an animation, let it complete before focusing and scrolling
-            $modal.one('animationend', showModal);
+            $modal.one('animationend', openModal);
           } else {
-            showModal()
+            openModal()
           }
         }
       }
 
-      function showModal () {
+      function openModal () {
         $modal.find(':focusable').first().focus()
 
         $modal.find('.modal-body').scrollTop(0);
+
+        $control.removeClass('opening-toggle');
 
         $modal
           .removeClass('opening')
@@ -199,6 +207,7 @@ jQuery.fn.extend({
 
       $control
         .id('modal_control')
+        .addClass('modal-control')
         .attr('aria-controls', function (index, attr) {
           try {
             attr = attr.split(' ')

@@ -33,13 +33,10 @@ jQuery.fn.extend({
         if (!$toggle.hasClass('hiding')) {
           $toggle
             .addClass('hiding')
+            .animateCss(options.hidingAnimation)
             .trigger('accessibleToggle:hiding');
 
           $control.addClass('hiding-toggle');
-
-          if ($toggle.is(':visible') && options.hidingAnimation) {
-            $toggle.animateCss(options.hidingAnimation);
-          }
 
           try {
             // update all controls
@@ -86,13 +83,10 @@ jQuery.fn.extend({
         if (!$toggle.hasClass('showing')) {
           $toggle
             .addClass('showing')
+            .animateCss(options.showingAnimation)
             .trigger('accessibleToggle:showing');
 
           $control.addClass('showing-toggle');
-
-          if ($toggle.is(':hidden') && options.showingAnimation) {
-            $toggle.animateCss(options.showingAnimation);
-          }
 
           try {
             // if a parent is defined, hide all other toggles in it
@@ -166,7 +160,7 @@ jQuery.fn.extend({
         .prop('disabled', false);
 
       $parent
-        .data('accessible-toggle-children', ($parent.data('accessible-toggle-children') || []).concat(document.getElementById($toggle.attr('id'))));
+        .data('accessible-toggle-children', ($parent.data('accessible-toggle-children') || []).concat(this));
 
       $toggle
         .attr('aria-labelledby', function (index, attr) {

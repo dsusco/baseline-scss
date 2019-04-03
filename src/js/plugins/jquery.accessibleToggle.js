@@ -189,7 +189,7 @@ jQuery.fn.extend({
           .on('accessibleToggle:show.baseline', show);
 
         $(window)
-          .on('load resize', function () {
+          .on('resize', function () {
             var hidden = options.hidden === undefined ? $toggle.is(':hidden') : eval(options.hidden);
 
             $toggle
@@ -199,7 +199,8 @@ jQuery.fn.extend({
               .removeClass('shown-toggle hidden-toggle')
               .addClass(hidden ? 'hidden-toggle' : 'shown-toggle')
               .attr('aria-expanded', !hidden);
-          });
+          })
+          .trigger('resize');
       }
 
       // check the control for click events

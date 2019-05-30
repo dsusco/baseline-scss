@@ -1,6 +1,6 @@
 {
   "name": "baseline-scss",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A Sass theme built on Normalize.css, Bourbon and Neat with some accessible jQuery plugins thrown in.",
   "homepage": "https://github.com/dsusco/baseline-scss",
   "bugs": "https://github.com/dsusco/baseline-scss/issues",
@@ -16,6 +16,7 @@
     "test": "bundle exec rake"
   },
   "devDependencies": {
+    "eyeglass": "^2.4.1",
     "stylelint": "^10.0.1"
   },
   "dependencies": {
@@ -24,8 +25,10 @@
     "normalize-scss": "^7.0.1"
   },
   "eyeglass": {
+    "exports": "eyeglass-exports.js",
+    "name": "baseline-scss",
     "needs": "*",
-    "exports": "eyeglass-exports.js"
+    "sassDir": "src/scss"
   },
   "style": "src/scss/baseline.scss"
 }

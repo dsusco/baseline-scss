@@ -1,5 +1,6 @@
 table {
   margin: 0 0 $_;
+  position: relative;
   width: 100%;
 }
 
@@ -10,8 +11,6 @@ caption {
 thead + tbody,
 tbody + tbody,
 tbody + tfoot {
-  position: relative;
-
   &::before {
     border-top: .1rem solid $_color_light;
     content: '';

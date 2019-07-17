@@ -12,10 +12,10 @@ thead + tbody,
 tbody + tbody,
 tbody + tfoot {
   &::before {
+    @include position(absolute, null 0);
+
     border-top: .1rem solid $_color_light;
     content: '';
-    position: absolute;
-    width: 100%;
   }
 }
 

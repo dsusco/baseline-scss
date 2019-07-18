@@ -62,3 +62,9 @@ a {
     text-decoration: underline;
   }
 }
+
+hr {
+  border: 0;
+  border-top: .1rem solid $_color_light;
+  margin: 0 0 ($_ - .1rem);
+}

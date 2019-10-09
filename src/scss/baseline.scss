@@ -33,6 +33,10 @@
   margin-bottom: $_;
 }
 
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+
 [tabindex] {
   cursor: pointer;
 }

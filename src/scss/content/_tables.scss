@@ -2,6 +2,14 @@ table {
   margin: 0 0 $_;
   position: relative;
   width: 100%;
+
+  &.striped {
+    > tbody {
+      > tr:nth-child(odd) {
+        background-color: darken($_body_background, 3.125%);
+      }
+    }
+  }
 }
 
 caption {
@@ -19,11 +27,6 @@ tbody + tfoot {
   }
 }
 
-tbody {
-  > tr:nth-child(even) {
-    background-color: darken($_body_background, 3.125%);
-  }
-}
 
 th,
 td {

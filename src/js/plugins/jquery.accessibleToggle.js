@@ -157,7 +157,9 @@ jQuery.fn.extend({
 
           return attr.join(' ').trim();
         })
-        .prop('disabled', false);
+        .prop('disabled', false)
+        .not('a[href], link[href], button, input, select, textarea')
+          .attr('tabindex', 0);
 
       $parent
         .data('accessible-toggle-children', ($parent.data('accessible-toggle-children') || []).concat(this));

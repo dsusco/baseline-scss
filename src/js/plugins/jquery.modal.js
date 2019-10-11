@@ -112,7 +112,7 @@ jQuery.fn.extend({
         var $target = $(event.target);
 
         // close if the target isn't a child of the modal, or if its a close button
-        if ($target.hasClass('close') || !$target.parent().closest($modal).length) {
+        if ($target.hasClass('close') || !$target.parent().closest($modal).length && !$target.is($control)) {
           close(event);
 
           // don't follow links

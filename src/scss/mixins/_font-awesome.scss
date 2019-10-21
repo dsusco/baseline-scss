@@ -1,5 +1,4 @@
 @mixin font-awesome($content: '') {
-  content: $content;
   font-style: normal;
   font-variant: normal;
   font-weight: normal;
@@ -9,4 +8,8 @@
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  &::before {
+    content: $content;
+  }
 }

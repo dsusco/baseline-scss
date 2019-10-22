@@ -10,6 +10,6 @@
   -moz-osx-font-smoothing: grayscale;
 
   &::before {
-    content: $content;
+    content: unquote("\'") + unquote(str-insert($content, "\\", 1)) + unquote("\'")
   }
 }

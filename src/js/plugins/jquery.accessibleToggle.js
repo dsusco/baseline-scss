@@ -89,9 +89,12 @@ jQuery.fn.extend({
           $control.addClass('showing-toggle');
 
           try {
+
             // if a parent is defined, hide all other toggles in it
-            $($parent.data('accessible-toggle-children')).not($toggle)
-              .trigger('accessibleToggle:hide.baseline', { stopPropagation: true });
+            $($parent.data('accessible-toggle-children'))
+              .filter(':visible')
+              .not($toggle)
+                .trigger('accessibleToggle:hide.baseline', { stopPropagation: true });
           } catch (ignore) {}
 
           try {

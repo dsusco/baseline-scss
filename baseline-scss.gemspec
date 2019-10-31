@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.files = `git ls-files`.split("\n")
   s.name = 'baseline-scss'
   s.summary = 'A CSS and JavaScript framework for mobile first web projects.'
-  s.version = '0.2.15'
+  s.version = '0.2.16'
 
   s.description = 'A Sass theme built on Normalize.css, Bourbon and Neat with some accessible jQuery plugins thrown in.'
   s.email = ['dsusco@gmail.com']

@@ -24,7 +24,7 @@
       z-index: 1;
 
       &::before {
-        content: '×';
+        content: '\00D7';
       }
     }
   }

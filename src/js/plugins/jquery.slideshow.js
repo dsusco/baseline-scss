@@ -75,16 +75,16 @@ jQuery.fn.extend({
         .on('keydown slideshow:next.baseline', function (event) {
           var index = $slides.filter('.active').index();
 
-          if (event.key === undefined || event.key === 'ArrowRight') {
-            $slideshow.trigger('slideshow:slide.baseline', index = (index === $slides.length - 1) ? 0 : index + 1);
+          if (event.key === undefined || options.keyboard && event.key === 'ArrowRight') {
+            $slideshow.trigger('slideshow:slide.baseline', (index === $slides.length - 1) ? 0 : index + 1);
           }
         })
         // show the slide before the active one, wrapping
         .on('keydown slideshow:previous.baseline', function (event) {
           var index = $slides.filter('.active').index();
 
-          if (event.key === undefined || event.key === 'ArrowLeft') {
-            $slideshow.trigger('slideshow:slide.baseline', index = (index === 0) ? $slides.length - 1 : index - 1);
+          if (event.key === undefined || options.keyboard && event.key === 'ArrowLeft') {
+            $slideshow.trigger('slideshow:slide.baseline', (index === 0) ? $slides.length - 1 : index - 1);
           }
         })
         // show the slide with the given index
@@ -107,8 +107,12 @@ jQuery.fn.extend({
 
           function onEntranceAnimationEnd () {
             // if the exiting slide had focus, give it to the entering slide
-            if ($fromSlide.find(':focus').length) {
-              $toSlide.find(':focusable').first().focus();
+            if ($fromSlide.is(':focus') || $fromSlide.find(':focus').length > 0) {
+              if ($toSlide.is(':focusable')) {
+                $toSlide.first().focus();
+              } else {
+                $toSlide.find(':focusable').first().focus();
+              }
             }
 
             $toSlide.removeClass('entering');

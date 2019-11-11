@@ -64,12 +64,21 @@ jQuery.fn.extend({
 
       $slideshow
         // pause when slideshow has focus/hover/touch
+        .on('mouseenter', function () {
+          $slideshow.addClass('hovered');
+        })
         .on('focusin mouseenter touchstart slideshow:pause.baseline', function () {
           $slideshow.addClass('paused');
         })
+        .on('mouseleave', function () {
+          $slideshow.removeClass('hovered');
+        })
         // unpause when slideshow doesn't have focus/hover
         .on('focusout mouseleave touchend slideshow:resume.baseline', function () {
-          $slideshow.removeClass(!$slideshow.find(':focus, :hover').length ? 'paused' : '');
+          if ($slideshow.find(document.activeElement).length < 1 &&
+              !$slideshow.hasClass('hovered')) {
+            $slideshow.removeClass('paused');
+          }
         })
         // show the slide after the active one, wrapping
         .on('keydown slideshow:next.baseline', function (event) {

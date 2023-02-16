@@ -1,0 +1,149 @@
+$_: 1.2rem !default;
+$_half_ceil: calc(ceil(calc($_ / 2 * 10)) / 10) !default;
+$_half_floor: $_ - $_half_ceil !default;
+
+:root {
+  --_: #{$_};
+  --_half_ceil: #{$_half_ceil};
+  --_half_floor: #{$_half_floor};
+
+  // Fonts
+  --font_family_sans: sans-serif;
+  --font_family_serif: serif;
+  --font_family_mono: monospace;
+
+  --font_family: var(--font_family_sans);
+  --font_family_h: var(--font_family_sans);
+  --font_family_code: var(--font_family_mono);
+
+  --font_weight: normal;
+  --font_weight_bold: bold;
+  --font_weight_h: var(--font_weight_bold);
+
+  --font_size: 1.6rem;
+  --font_size_lines: 2;
+  --font_size_code: 1.5rem;
+  --font_size_code_lines: 2;
+  --font_size_h1: 3.2rem;
+  --font_size_h1_lines: 3;
+  --font_size_h2: 2.8rem;
+  --font_size_h2_lines: 3;
+  --font_size_h3: 2.4rem;
+  --font_size_h3_lines: 2;
+  --font_size_h4: 2rem;
+  --font_size_h4_lines: 2;
+  --font_size_h5: 1.6rem;
+  --font_size_h5_lines: 2;
+  --font_size_h6: 1.2rem;
+  --font_size_h6_lines: 1;
+  --font_size_large: 125%;
+  --font_size_small: 75%;
+
+  // Colors
+  --body_background_color: #fff;
+  --body_color: #000;
+
+  --create_background_color: #cfc;
+  --create_border_color: #3c3;
+  --update_background_color: #cff;
+  --update_border_color: #3cc;
+  --destroy_background_color: #fcc;
+  --destroy_border_color: #c33;
+
+  // Outline
+  --outline_color: #9cf;
+  --outline_offset: .2rem;
+  --outline_style: auto;
+  --outline_width: .2rem;
+
+  // Containers
+  --container_padding: 2rem;
+  --container_max_width: 100%;
+
+  // Buttons
+  --button_background_color: #efefef;
+  --button_background_color_hover: #e5e5e5;
+  --button_background_color_focus: var(--button_background_color);
+  --button_background_color_active: #f5f5f5;
+  --button_background_color_disabled: #eee;
+
+  --button_border_color: #767676;
+  --button_border_color_hover: #4f4f4f;
+  --button_border_color_focus: var(--button_border_color);
+  --button_border_color_active: #8d8d8d;
+  --button_border_color_disabled: #d0d0d0;
+
+  --button_border_style: solid;
+
+  --button_border_radius: .3rem;
+
+  --button_border_width: .1rem;
+
+  --button_color: var(--body_color);
+  --button_color_hover: var(--button_color);
+  --button_color_focus: var(--button_color);
+  --button_color_active: var(--button_color);
+  --button_color_disabled: #b3b3b3;
+
+  --button_height: calc(2 * var(--_));
+
+  --button_padding: 0 .5em;
+
+  // Forms
+  --fieldset_padding_h: 1rem;
+
+  --legend_padding_h: 0 .5rem;
+
+  --input_background_color: var(--body_background_color);
+  --input_background_color_hover: var(--input_background_color);
+  --input_background_color_focus: var(--input_background_color);
+  --input_background_color_active: var(--input_background_color);
+  --input_background_color_disabled: #eee;
+
+  --input_border_color: #767676;
+  --input_border_color_hover: #4f4f4f;
+  --input_border_color_focus: var(--input_border_color);
+  --input_border_color_active: #8d8d8d;
+  --input_border_color_disabled: #d0d0d0;
+
+  --input_border_style: inset;
+
+  --input_border_radius: 0;
+
+  --input_border_width: .1rem;
+
+  --input_color: var(--body_color);
+  --input_color_hover: var(--input_color);
+  --input_color_focus: var(--input_color);
+  --input_color_active: var(--input_color);
+  --input_color_disabled: #b3b3b3;
+
+  --input_height: calc(var(--_) * 2);
+
+  --input_padding: 0 .25em;
+
+  --textarea_padding_h: .25em;
+
+  // Lists
+  --dl_margin_l: 1.5em;
+  --list_padding_l: 1.5em;
+
+  // Tables
+  --table_cell_padding: 0 .25em;
+
+  // Typography
+  --blockquote_margin_h: 2rem;
+
+  --hr_border_color: var(--body_color);
+  --hr_border_style: solid;
+  --hr_border_width: .1rem;
+  --hr_height: var(--_);
+
+  --link_color: #00e;
+  --link_visited_color: #528;
+  --link_hover_color: #00f;
+  --link_focus_color: var(--link_hover_color);
+  --link_active_color: var(--link_hover_color);
+
+  --mark_background_color: #ff0;
+}

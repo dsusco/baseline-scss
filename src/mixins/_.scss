@@ -1,0 +1,4 @@
+@mixin _($font_size: var(--font_size), $lines: var(--font_size_lines)) {
+  font-size: $font_size;
+  line-height: calc($lines * var(--_));
+}

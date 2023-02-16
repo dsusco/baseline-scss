@@ -1,0 +1,227 @@
+@at-root {
+  @-ms-viewport {
+    width: device-width; // Honor viewport meta in IE10+.
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::-moz-selection,
+::selection {
+  text-shadow: none; // Remove text-shadow in selection highlight.
+}
+
+[hidden] {
+  display: none !important;
+}
+
+[tabindex]:not([tabindex^='-']):focus {
+  @include outline();
+}
+// Don't outline elements that programmatically receive focus but wouldn't normally show an outline.
+[tabindex="-1"]:focus:not(:focus-visible) {
+  outline: 0 !important;
+}
+
+html {
+  font-size: x-small; // 1rem == 10px
+}
+
+body {
+  @include _();
+
+  background-color: var(--body_background_color); // Best practice.
+  color: var(--body_color);
+  font-family: var(--font_family);
+  font-weight: normal;
+  text-align: left;
+
+  -webkit-text-size-adjust: 100%; // Prevent adjustments of font size after orientation changes in iOS.
+  -webkit-tap-highlight-color: rgba(#000, 0); // Change the default tap highlight to be completely transparent in iOS.
+}
+
+article,
+aside,
+canvas,
+details,
+dialog,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+  display: block;
+}
+
+iframe {
+  border: 0;
+  vertical-align: middle;
+}
+
+summary {
+  cursor: pointer;
+}
+
+// Code
+code {
+  word-wrap: break-word;
+
+  a > & {
+    color: inherit; // Avoid broken underline and more when inside anchors.
+  }
+}
+
+pre {
+  display: block;
+  overflow: auto;
+  -ms-overflow-style: scrollbar; // Force scrollbar in IE11+/Edge.
+
+  code {
+    color: inherit;
+    font-size: inherit;
+    word-break: normal;
+  }
+}
+
+// Forms
+fieldset {
+  border: 0; // Don't affect page layout.
+  min-width: 0; // Behave like a standard block element.
+}
+
+label {
+  display: inline-block; // Allow labels to use `margin` for spacing.
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  line-height: inherit;
+  vertical-align: bottom; // Make's elments behave better height-wise.
+}
+
+#{$all-buttons} {
+  &:focus:not(:focus-visible) {
+    outline: 0; // Explicitly remove focus outline in Chromium.
+  }
+
+  &:not(:disabled) {
+    cursor: pointer; // Add "hand" cursor to non-disabled button elements.
+  }
+}
+
+[role="button"] {
+  cursor: pointer; // Set the cursor for non-`<button>` buttons.
+}
+
+[type="search"] {
+  outline-offset: -.2rem;
+}
+
+output {
+  display: inline-block;
+}
+
+select {
+  word-wrap: normal; // Remove the inheritance of word-wrap in Safari.
+
+  &:disabled {
+    opacity: 1; // Undo the opacity change from Chrome.
+  }
+}
+
+textarea {
+  resize: vertical; // Don't break its (horizontal) containers.
+}
+
+::file-selector-button {
+  font: inherit; // Inherit font family and line height for file input buttons.
+  -webkit-appearance: button; // Correct the inability to style clickable types in iOS and Safari.
+}
+
+::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+::-webkit-datetime-edit-fields-wrapper,
+::-webkit-datetime-edit-text,
+::-webkit-datetime-edit-minute,
+::-webkit-datetime-edit-hour-field,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-year-field {
+  padding: 0;
+}
+
+// Lists
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+// Multimedia
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle; // Remove gap between the bottom of their containers.
+}
+
+svg {
+  overflow: hidden; // Workaround for the SVG overflow bug in IE10/11.
+}
+
+// Tables
+table {
+  border-collapse: collapse; // Prevent double borders.
+}
+
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
+th {
+  font-weight: inherit;
+  text-align: inherit; // Matches default `<td>` alignment.
+  text-align: -webkit-match-parent; // Fix alignment for Safari.
+}
+
+// Typography
+address {
+  font-style: normal;
+  line-height: inherit;
+}
+
+hr {
+  box-sizing: border-box;
+}
+
+a:not([href]):not([tabindex]):focus {
+  outline: 0; // Plain anchors don't need an outline.
+}
+
+abbr[title] {
+  cursor: help; // Add explicit cursor to indicate changed behavior.
+  text-decoration-skip-ink: none; // Prevent the text-decoration to be skipped.
+}

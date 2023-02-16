@@ -1,0 +1,12 @@
+@mixin font_awesome($content: '') {
+  content: $content;
+  display: var(--fa-display, inline-block);
+  font-family: var(--fa-style-family, 'FontAwesome');
+  font-style: normal;
+  font-variant: normal;
+  font-weight: var(--fa-style, 900);
+  line-height: 1;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

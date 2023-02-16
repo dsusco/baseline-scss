@@ -1,24 +1,23 @@
 {
   "name": "baseline-scss",
-  "version": "0.2.19",
-  "description": "A Sass theme built on Normalize.css, Bourbon and Neat with some accessible jQuery plugins thrown in.",
+  "version": "0.3.0",
+  "description": "Styles for the Baseline Jekyll theme.",
   "homepage": "https://github.com/dsusco/baseline-scss#readme",
-  "bugs": {
-    "url": "https://github.com/dsusco/baseline-scss/issues"
-  },
+  "bugs": "https://github.com/dsusco/baseline-scss/issues",
   "license": "ISC",
   "author": "David Susco <dsusco@gmail.com> (https://github.com/dsusco)",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dsusco/baseline-scss.git"
+    "url": "https://github.com/dsusco/baseline-scss.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "bourbon": "^6.0.0",
-    "bourbon-neat": "^4.0.0",
-    "normalize-scss": "^7.0.1"
+  "devDependencies": {
+    "animate.css": "^4.1.1",
+    "bourbon": "^7.3.0",
+    "include-media": "^2.0.0",
+    "normalize.css": "^8.0.1"
   }
 }

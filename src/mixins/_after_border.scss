@@ -1,0 +1,12 @@
+@mixin after_border($border_color: var(--body_color), $border_width: .1rem, $border_style: solid, $position: 0) {
+  position: relative;
+
+  &::after {
+    @include position(absolute, $position);
+
+    border: $border_style $border_color;
+    @include border-width($border_width);
+    content: '';
+    pointer-events: none;
+  }
+}

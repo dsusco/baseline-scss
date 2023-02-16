@@ -1,0 +1,17 @@
+@mixin sr_only() {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@mixin sr_only_focusable() {
+  &:not(:focus):not(:focus-within) {
+    @include sr_only();
+  }
+}

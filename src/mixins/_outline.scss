@@ -1,0 +1,5 @@
+@mixin outline() {
+  outline: var(--outline_width) var(--outline_style) var(--outline_color);
+  outline-offset: var(--outline_offset);
+  z-index: 1;
+}

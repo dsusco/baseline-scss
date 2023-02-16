@@ -1,0 +1,27 @@
+table {
+  margin-bottom: var(--_);
+  width: 100%;
+}
+
+caption {
+  font-weight: var(--font_weight_bold);
+}
+
+thead th {
+  font-weight: var(--font_weight_bold);
+  vertical-align: bottom;
+}
+
+td, th {
+  padding: var(--table_cell_padding);
+  vertical-align: top;
+
+  > dl,
+  > ol,
+  > ul,
+  > table {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

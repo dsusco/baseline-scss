@@ -1,4 +1,6 @@
 lib/
-.ruby-version
+.gitignore
 baseline-scss.gemspec
+Gemfile
 package-lock.json
+Rakefile

@@ -1,0 +1,99 @@
+address {
+  @include margin(0 null var(--_));
+}
+
+blockquote {
+  @include margin(0 var(--blockquote_margin_h) var(--_));
+}
+
+h1, ._h1,
+h2, ._h2,
+h3, ._h3,
+h4, ._h4,
+h5, ._h5,
+h6, ._h6 {
+  @include margin(0 null var(--_));
+
+  font-family: var(--font_family_h);
+  font-weight: var(--font_weight_h);
+
+  small, ._small {
+    font-weight: var(--font_weight);
+  }
+}
+
+h1, ._h1 {
+  @include _(var(--font_size_h1), var(--font_size_h1_lines));
+}
+
+h2, ._h2 {
+  @include _(var(--font_size_h2), var(--font_size_h2_lines));
+}
+
+h3, ._h3 {
+  @include _(var(--font_size_h3), var(--font_size_h3_lines));
+}
+
+h4, ._h4 {
+  @include _(var(--font_size_h4), var(--font_size_h4_lines));
+}
+
+h5, ._h5 {
+  @include _(var(--font_size_h5), var(--font_size_h5_lines));
+}
+
+h6, ._h6 {
+  @include _(var(--font_size_h6), var(--font_size_h6_lines));
+}
+
+p, ._p {
+  @include margin(0 null var(--_));
+}
+
+hr {
+  @include margin(0 null);
+
+  border: 0;
+  border-top: var(--hr_border_width) var(--hr_border_style) var(--hr_border_color);
+  height: var(--hr_height);
+}
+
+a {
+  &:link {
+    color: var(--link_color);
+  }
+
+  &:visited {
+    color: var(--link_visited_color);
+  }
+
+  &[href]:hover {
+    color: var(--link_hover_color);
+  }
+
+  &:focus {
+    @include outline();
+
+    color: var(--link_focus_color);
+  }
+
+  &[href]:active {
+    color: var(--link_active_color);
+  }
+}
+
+._large {
+  font-size: var(--font_size_large);
+  line-height: 1;
+}
+
+mark {
+  background-color: var(--mark_background_color);
+}
+
+small, ._small,
+sub,
+sup {
+  font-size: var(--font_size_small);
+  line-height: 1;
+}

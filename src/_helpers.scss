@@ -1,0 +1,49 @@
+._clearfix {
+  @include clearfix();
+}
+
+._margin_bottom {
+  margin-bottom: var(--_);
+}
+._no_margin_bottom {
+  margin-bottom: 0;
+}
+
+._responsive_table_wrapper {
+  margin-bottom: var(--_);
+  overflow-x: auto;
+
+  > table:last-child {
+    margin-bottom: 0;
+  }
+}
+
+._sr_only {
+  @include sr_only();
+}
+._sr_only_focusable {
+  @include sr_only_focusable();
+}
+
+._text_left {
+  text-align: left;
+}
+._text_right {
+  text-align: right;
+}
+._text_center {
+  text-align: center;
+}
+._text_justify {
+  text-align: justify;
+}
+
+._text_capitalize {
+  text-transform: capitalize;
+}
+._text_uppercase {
+  text-transform: uppercase;
+}
+._text_lowercase {
+  text-transform: lowercase;
+}

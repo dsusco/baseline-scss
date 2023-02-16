@@ -1,0 +1,15 @@
+dl, ol, ul {
+  @include margin(0 null var(--_));
+
+  & & {
+    margin-bottom: 0;
+  }
+}
+
+dl dl {
+  margin-left: var(--dl_margin_l);
+}
+
+ol, ul {
+  padding-left: var(--list_padding_l);
+}

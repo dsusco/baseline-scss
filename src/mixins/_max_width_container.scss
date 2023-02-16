@@ -1,0 +1,15 @@
+@mixin max_width_container($background_color: inherit, $max_width: var(--container_max_width)) {
+  @include margin(null auto);
+
+  max-width: $max_width;
+  position: relative;
+
+  &::before {
+    @include position(absolute, 0 -50vw);
+
+    background-color: $background_color;
+    content: '';
+    pointer-events: none;
+    z-index: -1;
+  }
+}

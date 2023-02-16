@@ -583,8 +583,7 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
   } @else if ($im-media-support and list.length($conditions) > 0) {
     @media #{string.unquote(parse-expression(list.nth($conditions, 1)))} {
       // Recursive call
-      $sliced-conditions: slice($conditions, 2);
-      @include media($sliced-conditions...) {
+      @include media(slice($conditions, 2)...) {
         @content;
       }
     }

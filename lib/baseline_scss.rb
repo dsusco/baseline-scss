@@ -10,7 +10,7 @@ module BaselineScss
           begin
             options['sass']['load_paths'] << File.expand_path('../src', __dir__)
           rescue
-            options.merge({ 'sass' => { 'load_paths' => [File.expand_path('../src', __dir__)] } })
+            options.merge!({ 'sass' => { 'load_paths' => [File.expand_path('../src', __dir__)] } })
           end
 
           options

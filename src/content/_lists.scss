@@ -10,6 +10,14 @@ dl dl {
   margin-left: var(--dl_margin_l);
 }
 
+dt {
+  font-weight: var(--font_weight_bold);
+}
+
+dd {
+  margin-left: 0;
+}
+
 ol, ul {
   padding-left: var(--list_padding_l);
 }

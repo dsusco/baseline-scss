@@ -23,7 +23,7 @@
   @include outline();
 }
 // Don't outline elements that programmatically receive focus but wouldn't normally show an outline.
-[tabindex="-1"]:focus:not(:focus-visible) {
+[tabindex='-1']:focus:not(:focus-visible) {
   outline: 0 !important;
 }
 
@@ -119,12 +119,26 @@ textarea {
   }
 }
 
-[role="button"] {
+[role='button'] {
   cursor: pointer; // Set the cursor for non-`<button>` buttons.
 }
 
-[type="search"] {
+[type='search'] {
   outline-offset: -.2rem;
+
+  &::-ms-clear,
+  &::-ms-reveal {
+    display: none;
+    height: 0;
+    width : 0;
+  }
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    display: none;
+  }
 }
 
 output {
@@ -160,15 +174,6 @@ textarea {
 ::-webkit-datetime-edit-month-field,
 ::-webkit-datetime-edit-year-field {
   padding: 0;
-}
-
-// Lists
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin-left: 0;
 }
 
 // Multimedia

@@ -66,12 +66,14 @@ $_half_floor: $_ - $_half_ceil !default;
   --button_background_color_focus: var(--button_background_color);
   --button_background_color_active: #f5f5f5;
   --button_background_color_disabled: #eee;
+  --button_background_color_read_only: var(--button_background_color_disabled);
 
   --button_border_color: #767676;
   --button_border_color_hover: #4f4f4f;
   --button_border_color_focus: var(--button_border_color);
   --button_border_color_active: #8d8d8d;
   --button_border_color_disabled: #d0d0d0;
+  --button_border_color_read_only: var(--button_border_color_disabled);
 
   --button_border_style: solid;
 
@@ -84,6 +86,7 @@ $_half_floor: $_ - $_half_ceil !default;
   --button_color_focus: var(--button_color);
   --button_color_active: var(--button_color);
   --button_color_disabled: #b3b3b3;
+  --button_color_read_only: var(--button_color_disabled);
 
   --button_height: calc(2 * var(--_));
 
@@ -99,12 +102,14 @@ $_half_floor: $_ - $_half_ceil !default;
   --input_background_color_focus: var(--input_background_color);
   --input_background_color_active: var(--input_background_color);
   --input_background_color_disabled: #eee;
+  --input_background_color_read_only: var(--input_background_color_disabled);
 
   --input_border_color: #767676;
   --input_border_color_hover: #4f4f4f;
   --input_border_color_focus: var(--input_border_color);
   --input_border_color_active: #8d8d8d;
   --input_border_color_disabled: #d0d0d0;
+  --input_border_color_read_only: var(--input_border_color_disabled);
 
   --input_border_style: inset;
 
@@ -117,6 +122,7 @@ $_half_floor: $_ - $_half_ceil !default;
   --input_color_focus: var(--input_color);
   --input_color_active: var(--input_color);
   --input_color_disabled: #b3b3b3;
+  --input_color_read_only: var(--input_color_disabled);
 
   --input_height: calc(var(--_) * 2);
 

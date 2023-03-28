@@ -33,11 +33,5 @@
     color: var(--button_color_disabled);
     pointer-events: none;
   }
-
-  &:read-only {
-    background-color: var(--button_background_color_read_only);
-    border-color: var(--button_border_color_read_only);
-    color: var(--button_color_read_only);
-  }
 }
 

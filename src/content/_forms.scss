@@ -58,16 +58,16 @@ select {
     color: var(--input_color_disabled);
     pointer-events: none;
   }
+}
+
+#{$all-text-inputs} {
+  padding: var(--input_padding);
 
   &:read-only {
     background-color: var(--input_background_color_read_only);
     border-color: var(--input_border_color_read_only);
     color: var(--input_color_read_only);
   }
-}
-
-#{$all-text-inputs} {
-  padding: var(--input_padding);
 }
 
 input[type='checkbox'],

@@ -1,6 +1,9 @@
 lib/
+pkg/
 .gitignore
+.jekyll-cache
 baseline-scss.gemspec
 Gemfile
+Gemfile.lock
 package-lock.json
 Rakefile

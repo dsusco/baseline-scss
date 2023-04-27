@@ -23,5 +23,5 @@
     "include-media": "^2.0.0",
     "normalize.css": "^8.0.1"
   },
-  "style": "src/baseline.scss"
+  "style": "src/baseline-scss.scss"
 }

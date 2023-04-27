@@ -1,12 +1,14 @@
 {
   "name": "baseline-scss",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "Styles for the Baseline Jekyll theme.",
   "homepage": "https://github.com/dsusco/baseline-scss#readme",
   "bugs": "https://github.com/dsusco/baseline-scss/issues",
   "license": "ISC",
   "author": "David Susco <dsusco@gmail.com> (https://github.com/dsusco)",
-  "files": ["src/"],
+  "files": [
+    "src/"
+  ],
   "main": "index.js",
   "repository": {
     "type": "git",

@@ -1,8 +1,5 @@
-@import 'vendors/_bourbon';
-@import 'vendors/_include-media';
-
 $_: 1.2rem !default;
 $_half_ceil: calc(ceil(calc($_ / 2 * 10)) / 10) !default;
 $_half_floor: $_ - $_half_ceil !default;
 
-@import '_mixins';
+@import 'baseline-scss/_mixins';

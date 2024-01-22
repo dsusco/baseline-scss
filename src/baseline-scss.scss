@@ -1,9 +1,12 @@
+@import 'vendors/_bourbon';
+@import 'vendors/_include-media';
+
 @import '_baseline';
 
 @import 'vendors/normalize';
 
-@import '_variables';
-@import '_reboot';
-@import '_content';
-@import '_helpers';
+@import 'baseline-scss/_variables';
+@import 'baseline-scss/_reboot';
+@import 'baseline-scss/_content';
+@import 'baseline-scss/_helpers';
 

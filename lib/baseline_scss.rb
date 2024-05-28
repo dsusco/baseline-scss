@@ -7,11 +7,9 @@ module BaselineScss
 
           options = Jekyll.configuration(options)
 
-          begin
-            options['sass']['load_paths'] << File.expand_path('../src', __dir__)
-          rescue
-            options.merge!({ 'sass' => { 'load_paths' => [File.expand_path('../src', __dir__)] } })
-          end
+          options['sass'] ||= {}
+          options['sass']['load_paths'] ||= []
+          options['sass']['load_paths'] << File.expand_path('../src', __dir__)
 
           options
         end

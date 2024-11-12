@@ -1,8 +1,4 @@
-@at-root {
-  @-ms-viewport {
-    width: device-width; // Honor viewport meta in IE10+.
-  }
-}
+@use 'baseline-scss/mixins/outline' as o;
 
 *,
 *::before,
@@ -10,17 +6,12 @@
   box-sizing: border-box;
 }
 
-::-moz-selection,
-::selection {
-  text-shadow: none; // Remove text-shadow in selection highlight.
-}
-
 [hidden] {
   display: none !important;
 }
 
 [tabindex]:not([tabindex^='-']):focus {
-  @include outline();
+  @include o.outline();
 }
 // Don't outline elements that programmatically receive focus but wouldn't normally show an outline.
 [tabindex='-1']:focus:not(:focus-visible) {
@@ -32,32 +23,16 @@ html {
 }
 
 body {
-  @include _();
-
   background-color: var(--body_background_color); // Best practice.
   color: var(--body_color);
+  line-height: var(--line_height);
   font-family: var(--font_family);
+  font-size: var(--font_size);
   font-weight: normal;
   text-align: left;
 
   -webkit-text-size-adjust: 100%; // Prevent adjustments of font size after orientation changes in iOS.
   -webkit-tap-highlight-color: rgba(#000, 0); // Change the default tap highlight to be completely transparent in iOS.
-}
-
-article,
-aside,
-canvas,
-details,
-dialog,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section {
-  display: block;
 }
 
 iframe {
@@ -81,7 +56,6 @@ code {
 pre {
   display: block;
   overflow: auto;
-  -ms-overflow-style: scrollbar; // Force scrollbar in IE11+/Edge.
 
   code {
     color: inherit;
@@ -105,11 +79,15 @@ input,
 optgroup,
 select,
 textarea {
+  font-size: inherit;
   line-height: inherit;
-  vertical-align: bottom; // Make's elments behave better height-wise.
+  //vertical-align: bottom; // Make's elments behave better height-wise.
 }
 
-#{$all-buttons} {
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
   &:focus:not(:focus-visible) {
     outline: 0; // Explicitly remove focus outline in Chromium.
   }
@@ -119,26 +97,16 @@ textarea {
   }
 }
 
+button {
+  border-radius: 0; // Remove macOS Chrome border-radius.
+}
+
 [role='button'] {
   cursor: pointer; // Set the cursor for non-`<button>` buttons.
 }
 
 [type='search'] {
   outline-offset: -.2rem;
-
-  &::-ms-clear,
-  &::-ms-reveal {
-    display: none;
-    height: 0;
-    width : 0;
-  }
-
-  &::-webkit-search-decoration,
-  &::-webkit-search-cancel-button,
-  &::-webkit-search-results-button,
-  &::-webkit-search-results-decoration {
-    display: none;
-  }
 }
 
 output {
@@ -176,6 +144,18 @@ textarea {
   padding: 0;
 }
 
+::-webkit-search-decoration,
+::-webkit-search-cancel-button,
+::-webkit-search-results-button,
+::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+	height: auto;
+}
+
 // Multimedia
 audio,
 canvas,
@@ -193,6 +173,7 @@ svg {
 // Tables
 table {
   border-collapse: collapse; // Prevent double borders.
+	border-color: currentcolor;
 }
 
 thead,

@@ -1,15 +1,12 @@
 pre {
-  @include _(var(--font_size_code), var(--font_size_code_lines));
-  @include margin(0 null var(--_));
-
-  font-family: var(--font_family_code);
+  margin: 0 0 var(--_);
+  line-height: var(--line_height_code);
 }
 
+pre,
 code,
 kbd,
 samp {
   font-family: var(--font_family_code);
   font-size: var(--font_size_code);
-  vertical-align: bottom;
 }
-

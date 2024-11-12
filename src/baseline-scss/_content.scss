@@ -1,7 +1,3 @@
-@import 'baseline-scss/content/_buttons';
-@import 'baseline-scss/content/_code';
-@import 'baseline-scss/content/_forms';
-@import 'baseline-scss/content/_lists';
-@import 'baseline-scss/content/_multimedia';
-@import 'baseline-scss/content/_tables';
-@import 'baseline-scss/content/_typography';
+@use 'baseline-scss/content/_buttons';
+@use 'baseline-scss/content/_code';
+@use 'baseline-scss/content/_forms';

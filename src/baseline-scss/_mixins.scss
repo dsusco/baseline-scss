@@ -1,7 +1,5 @@
-@use 'baseline-scss/mixins/_';
-@use 'baseline-scss/mixins/_after_border';
-@use 'baseline-scss/mixins/_clearfix';
-@use 'baseline-scss/mixins/_font_awesome';
-@use 'baseline-scss/mixins/_max_width_container';
-@use 'baseline-scss/mixins/_outline';
-@use 'baseline-scss/mixins/_sr_only';
+@mixin outline() {
+  outline: var(--outline_width) var(--outline_style) var(--outline_color);
+  outline-offset: var(--outline_offset);
+  z-index: 1;
+}

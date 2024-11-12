@@ -1,4 +1,4 @@
-@use 'baseline-scss/mixins/outline' as o;
+@use 'baseline-scss/mixins' as _;
 
 *,
 *::before,
@@ -11,7 +11,7 @@
 }
 
 [tabindex]:not([tabindex^='-']):focus {
-  @include o.outline();
+  @include _.outline();
 }
 // Don't outline elements that programmatically receive focus but wouldn't normally show an outline.
 [tabindex='-1']:focus:not(:focus-visible) {

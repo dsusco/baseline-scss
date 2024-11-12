@@ -1,53 +1,53 @@
-@use 'baseline-scss/mixins/outline' as o;
+@use 'baseline-scss/mixins' as _;
 
 button,
 [type='button'],
 [type='reset'],
 [type='submit'] {
-  --background_color: var(--button_background_color);
-  --border_color: var(--button_border_color);
-  --border_radius: var(--button_border_radius);
-  --border_style: var(--button_border_style);
-  --border_width: var(--button_border_width);
-  --color: var(--button_color);
-  --font_size: var(--button_font_size);
-  --height: var(--button_height);
-  --line_height: var(--button_line_height);
-  --padding: var(--button_padding);
+  --_background_color: var(--background_color, var(--gray_200));
+  --_border_color: var(--border_color, var(--gray_600));
+  --_border_radius: var(--border_radius, .3rem);
+  --_border_style: var(--border_style, solid);
+  --_border_width: var(--border_width, .1rem);
+  --_color: var(--color, var(--body_color));
+  --_font_size: var(--font_size, var(--font_size));
+  --_height: var(--height, calc(2 * var(--_)));
+  --_line_height: var(--line_height, 1);
+  --_padding: var(--padding, 0 .5em);
 
-  background-color: var(--background_color);
-  border: var(--border_width) var(--border_style) var(--border_color);
-  border-radius: var(--border_radius);
-  color: var(--color);
-  font-size: var(--font_size);
-  height: var(--height);
-  line-height: var(--line_height);
-  padding: var(--padding);
+  background-color: var(--_background_color);
+  border: var(--_border_width) var(--_border_style) var(--_border_color);
+  border-radius: var(--_border_radius);
+  color: var(--_color);
+  font-size: var(--_font_size);
+  height: var(--_height);
+  line-height: var(--_line_height);
+  padding: var(--_padding);
 
   &:hover {
-    --background_color: var(--button_background_color_hover);
-    --border_color: var(--button_border_color_hover);
-    --color: var(--button_color_hover);
+    --background_color: var(--background_color_hover, var(--gray_300));
+    --border_color: var(--border_color_hover, var(--gray_800));
+    --color: var(--color_hover, var(--body_color));
   }
 
   &:focus {
-    --background_color: var(--button_background_color_focus);
-    --border_color: var(--button_border_color_focus);
-    --color: var(--button_color_focus);
+    --background_color: var(--background_color_focus);
+    --border_color: var(--border_color_focus);
+    --color: var(--color_focus);
 
-    @include o.outline();
+    @include _.outline();
   }
 
   &:active {
-    --background_color: var(--button_background_color_active);
-    --border_color: var(--button_border_color_active);
-    --color: var(--button_color_active);
+    --background_color: var(--background_color_active, var(--gray_100));
+    --border_color: var(--border_color_active, var(--gray_500));
+    --color: var(--color_active);
   }
 
   &:disabled {
-    --background_color: var(--button_background_color_disabled);
-    --border_color: var(--button_border_color_disabled);
-    --color: var(--button_color_disabled);
+    --background_color: var(--background_color_disabled, var(--gray_200));
+    --border_color: var(--border_color_disabled, var(--gray_300));
+    --color: var(--color_disabled, var(--gray_400));
 
     pointer-events: none;
   }

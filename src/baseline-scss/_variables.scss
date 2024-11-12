@@ -47,6 +47,17 @@
   --destroy_background_color: #fcc;
   --destroy_border_color: #c33;
 
+  --gray_50: #fafafa;
+  --gray_100: #f5f5f5;
+  --gray_200: #eeeeee;
+  --gray_300: #e0e0e0;
+  --gray_400: #bdbdbd;
+  --gray_500: #9e9e9e;
+  --gray_600: #757575;
+  --gray_700: #616161;
+  --gray_800: #424242;
+  --gray_900: #212121;
+
   // Outline
   --outline_color: #9cf;
   --outline_offset: .2rem;
@@ -56,34 +67,6 @@
   // Containers
   --container_padding: 2rem;
   --container_max_width: 100%;
-
-  // Buttons
-  --button_background_color: #efefef;
-  --button_border_color: #767676;
-  --button_border_radius: .3rem;
-  --button_border_style: solid;
-  --button_border_width: .1rem;
-  --button_color: var(--body_color);
-  --button_font_size: var(--font_size);
-  --button_height: calc(2 * var(--_));
-  --button_line_height: 1;
-  --button_padding: 0 .5em;
-
-  --button_background_color_hover: #e5e5e5;
-  --button_border_color_hover: #4f4f4f;
-  --button_color_hover: var(--button_color);
-
-  --button_background_color_focus: var(--button_background_color);
-  --button_border_color_focus: var(--button_border_color);
-  --button_color_focus: var(--button_color);
-
-  --button_background_color_active: #f5f5f5;
-  --button_border_color_active: #8d8d8d;
-  --button_color_active: var(--button_color);
-
-  --button_background_color_disabled: #eee;
-  --button_border_color_disabled: #d0d0d0;
-  --button_color_disabled: #b3b3b3;
 
   // Forms
   --fieldset_padding_h: 1rem;

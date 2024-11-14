@@ -1,94 +1,168 @@
+@use 'baseline-scss/mixins' as _;
+
 form {
-  margin: 0 0 var(--_);
+  margin-bottom: var(--_);
+
+  > fieldset:last-child {
+    margin-bottom: 0;
+  }
 }
 
 fieldset {
-  @include after_border();
-
-  border: 0;
-  padding: var(--_) var(--fieldset_padding_h);
+  border: 0; // Don't affect page layout.
   margin: 0 0 var(--_);
+  min-width: 0; // Behave like a standard block element.
+  padding: var(--_) .5em;
+  position: relative;
 
-  &::after {
-    top: calc(-1 * var(--_));
-    z-index: -1;
-  }
+  &:has(> legend:first-child) {
+    --after_border_inset: calc(-1 * var(--_)) 0 0;
+    --after_border_z_index: -1;
 
-  > :last-child {
-    margin-bottom: 0;
+    @include _.after_border();
   }
 }
 
 legend {
   background-color: var(--body_background_color);
-  padding: var(--legend_padding_h);
+  padding: 0 .5em;
 }
 
-#{$all-text-inputs},
-select {
-  background-color: var(--input_background_color);
-  border: var(--input_border_width) var(--input_border_style) var(--input_border_color);
-  border-radius: var(--input_border_radius);
-  color: var(--input_color);
-  height: var(--input_height);
+label {
+  display: inline-block; // Allow labels to use `margin` for spacing.
+}
+
+input,
+optgroup,
+select,
+textarea {
+  font-size: inherit;
+  line-height: inherit;
+
+  &:disabled {
+    pointer-events: none;
+  }
+}
+
+input,
+select,
+textarea {
+  &:focus {
+    @include _.outline();
+  }
+}
+
+[type='color'],
+[type='date'],
+[type='datetime'],
+[type='datetime-local'],
+[type='email'],
+[type='month'],
+[type='number'],
+[type='password'],
+[type='search'],
+[type='tel'],
+[type='text'],
+[type='time'],
+[type='url'],
+[type='week'],
+input:not([type]),
+select,
+textarea {
+  --_background_color: var(--background_color, var(--body_background_color));
+  --_border_color: var(--border_color, var(--gray_600));
+  --_border_radius: var(--border_radius, 0);
+  --_border_style: var(--border_style, solid);
+  --_border_width: var(--border_width, .1rem);
+  --_color: var(--color, inherit);
+  --_font_size: var(--font_size, inherit);
+  --_line_height: var(--line_height, 1);
+  --_padding: var(--padding, 0 .25em);
+
+  background-color: var(--_background_color);
+  border-color: var(--_border_color);
+  border-radius: var(--_border_radius);
+  border-style: var(--_border_style);
+  border-width: var(--_border_width);
+  color: var(--_color);
+  font-size: var(--_font_size);
+  line-height: var(--_line_height);
+  padding: var(--_padding);
 
   &:hover {
-    background-color: var(--input_background_color_hover);
-    border-color: var(--input_border_color_hover);
-    color: var(--input_color_hover);
+    --background_color: var(--background_color_hover);
+    --border_color: var(--border_color_hover, var(--gray_800));
+    --color: var(--color_hover);
   }
 
   &:focus {
-    @include outline();
-
-    background-color: var(--input_background_color_focus);
-    border-color: var(--input_border_color_focus);
-    color: var(--input_color_focus);
+    --background_color: var(--background_color_focus);
+    --border_color: var(--border_color_focus);
+    --color: var(--color_focus);
   }
 
   &:active {
-    background-color: var(--input_background_color_active);
-    border-color: var(--input_border_color_active);
-    color: var(--input_color_active);
+    --background_color: var(--background_color_active);
+    --border_color: var(--border_color_active, var(--gray_500));
+    --color: var(--color_active);
   }
 
   &:disabled {
-    background-color: var(--input_background_color_disabled);
-    border-color: var(--input_border_color_disabled);
-    color: var(--input_color_disabled);
-    pointer-events: none;
+    --background_color: var(--background_color_disabled, var(--gray_200));
+    --border_color: var(--border_color_disabled, var(--gray_300));
+    --color: var(--color_disabled, var(--gray_400));
   }
+}
 
+[type='color'],
+[type='date'],
+[type='datetime'],
+[type='datetime-local'],
+[type='email'],
+[type='month'],
+[type='number'],
+[type='password'],
+[type='search'],
+[type='tel'],
+[type='text'],
+[type='time'],
+[type='url'],
+[type='week'],
+input:not([type]),
+textarea {
   &:read-only {
-    background-color: var(--input_background_color_read_only);
-    border-color: var(--input_border_color_read_only);
-    color: var(--input_color_read_only);
+    --background_color: var(--background_color_read_only, var(--gray_200));
+    --border_color: var(--border_color_read_only, var(--gray_300));
+    --color: var(--color_read_only, var(--gray_400));
   }
 }
 
-#{$all-text-inputs} {
-  padding: var(--input_padding);
+[type='range'] {
+  vertical-align: middle;
 }
 
-input[type='checkbox'],
-input[type='radio'],
-input[type='range'] {
-  &:focus {
-    @include outline();
+[type='search'] {
+  outline-offset: -.2rem;
+}
+
+select {
+  word-wrap: normal; // Remove the inheritance of word-wrap in Safari.
+
+  &:disabled {
+    opacity: 1; // Undo the opacity change from Chrome.
   }
-}
-
-input[type='checkbox'],
-input[type='radio'] {
-  vertical-align: baseline;
-}
-
-input[type='range'] {
-  vertical-align: text-top;
 }
 
 textarea {
+  --line_height: var(--body_line_height);
+  --padding: calc(var(--_half_floor) - var(--_border_width)) .25em calc(var(--_half_ceil) - var(--_border_width));
+
   height: auto;
-  padding: calc(var(--_half_ceil) - var(--input_border_width)) var(--textarea_padding_h) calc(var(--_half_floor) - var(--input_border_width));
+  resize: vertical; // Don't break its (horizontal) containers.
+  vertical-align: top;
 }
 
+::file-selector-button {
+  font: inherit; // Inherit font family and line height for file input buttons.
+  -webkit-appearance: button; // Correct the inability to style clickable types in iOS and Safari.
+}

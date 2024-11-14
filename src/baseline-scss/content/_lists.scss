@@ -1,5 +1,6 @@
 dl, ol, ul {
-  @include margin(0 null var(--_));
+  margin-top: 0;
+  margin-bottom: var(--_);
 
   & & {
     margin-bottom: 0;
@@ -7,7 +8,7 @@ dl, ol, ul {
 }
 
 dl dl {
-  margin-left: var(--dl_margin_l);
+  margin-left: 1.5em;
 }
 
 dt {
@@ -19,5 +20,5 @@ dd {
 }
 
 ol, ul {
-  padding-left: var(--list_padding_l);
+  padding-left: 1.5em;
 }

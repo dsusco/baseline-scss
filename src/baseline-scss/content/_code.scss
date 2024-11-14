@@ -1,12 +1,28 @@
-pre {
-  margin: 0 0 var(--_);
-  line-height: var(--line_height_code);
-}
-
 pre,
 code,
 kbd,
 samp {
-  font-family: var(--font_family_code);
-  font-size: var(--font_size_code);
+  font-family: var(--code_font_family);
+  font-size: var(--code_font_size);
+}
+
+pre {
+  display: block;
+  line-height: var(--code_line_height);
+  margin: 0 0 var(--_);
+  overflow: auto;
+
+  code {
+    color: inherit;
+    font-size: inherit;
+    word-break: normal;
+  }
+}
+
+code {
+  word-wrap: break-word;
+
+  a > & {
+    color: inherit; // Avoid broken underline and more when inside anchors.
+  }
 }

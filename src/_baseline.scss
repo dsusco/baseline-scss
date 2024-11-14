@@ -1,5 +1,0 @@
-@use 'sass:math';
-
-$_: 1.2rem !default;
-$_half_ceil: calc(math.ceil(calc($_ / 2 * 10)) / 10) !default;
-$_half_floor: $_ - $_half_ceil !default;

@@ -1,9 +1,13 @@
+@use 'baseline-scss/mixins' as _;
+
 address {
-  @include margin(0 null var(--_));
+  font-style: normal;
+  line-height: inherit;
+  margin-bottom: var(--_);
 }
 
 blockquote {
-  @include margin(0 var(--blockquote_margin_h) var(--_));
+  margin: 0 2em var(--_);
 }
 
 h1, ._h1,
@@ -12,74 +16,94 @@ h3, ._h3,
 h4, ._h4,
 h5, ._h5,
 h6, ._h6 {
-  @include margin(0 null var(--_));
-
-  font-family: var(--font_family_h);
-  font-weight: var(--font_weight_h);
+  font-family: var(--h_font_family);
+  font-weight: var(--font_weight_bold);
+  margin-top: 0;
+  margin-bottom: var(--_);
 
   small, ._small {
-    font-weight: var(--font_weight);
+    font-weight: var(--font_weight_normal);
   }
 }
 
 h1, ._h1 {
-  @include _(var(--font_size_h1), var(--font_size_h1_lines));
+  font-size: var(--h1_font_size);
+  line-height: var(--h1_line_height);
 }
 
 h2, ._h2 {
-  @include _(var(--font_size_h2), var(--font_size_h2_lines));
+  font-size: var(--h2_font_size);
+  line-height: var(--h2_line_height);
 }
 
 h3, ._h3 {
-  @include _(var(--font_size_h3), var(--font_size_h3_lines));
+  font-size: var(--h3_font_size);
+  line-height: var(--h3_line_height);
 }
 
 h4, ._h4 {
-  @include _(var(--font_size_h4), var(--font_size_h4_lines));
+  font-size: var(--h4_font_size);
+  line-height: var(--h4_line_height);
 }
 
 h5, ._h5 {
-  @include _(var(--font_size_h5), var(--font_size_h5_lines));
+  font-size: var(--h5_font_size);
+  line-height: var(--h5_line_height);
 }
 
 h6, ._h6 {
-  @include _(var(--font_size_h6), var(--font_size_h6_lines));
+  font-size: var(--h6_font_size);
+  line-height: var(--h6_line_height);
 }
 
 p, ._p {
-  @include margin(0 null var(--_));
+  margin-top: 0;
+  margin-bottom: var(--_);
 }
 
 hr {
-  @include margin(0 null);
-
   border: 0;
-  border-top: var(--hr_border_width) var(--hr_border_style) var(--hr_border_color);
-  height: var(--hr_height);
+  border-top: .1rem solid var(--body_color);
+  box-sizing: border-box;
+  height: var(--_);
+  margin: 0;
 }
 
 a {
+  --_color: var(--color, inherit)
+
+  color: var(--_color);
+
   &:link {
-    color: var(--link_color);
+    --color: var(--link_color);
   }
 
   &:visited {
-    color: var(--link_visited_color);
+    --color: var(--link_color_visited);
   }
 
   &[href]:hover {
-    color: var(--link_hover_color);
+    --color: var(--link_color_hover);
   }
 
   &:focus {
-    @include outline();
+    --color: var(--link_color_focus);
 
-    color: var(--link_focus_color);
+    @include _.outline();
   }
 
   &[href]:active {
-    color: var(--link_active_color);
+    --color: var(--link_color_active);
   }
+
+  &:not([href]):not([tabindex]):focus {
+    outline: 0; // Plain anchors don't need an outline.
+  }
+}
+
+abbr[title] {
+  cursor: help; // Add explicit cursor to indicate changed behavior.
+  text-decoration-skip-ink: none; // Prevent the text-decoration to be skipped.
 }
 
 ._large {
@@ -88,7 +112,7 @@ a {
 }
 
 mark {
-  background-color: var(--mark_background_color);
+  background-color: #ff0;
 }
 
 small, ._small,

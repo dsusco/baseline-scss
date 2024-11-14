@@ -1,4 +1,6 @@
 table {
+  border-collapse: collapse; // Prevent double borders.
+	border-color: currentcolor;
   margin-bottom: var(--_);
   width: 100%;
 }
@@ -7,13 +9,24 @@ caption {
   font-weight: var(--font_weight_bold);
 }
 
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
 thead th {
   font-weight: var(--font_weight_bold);
   vertical-align: bottom;
 }
 
 td, th {
-  padding: var(--table_cell_padding);
+  padding: 0 .25em;
   vertical-align: top;
 
   > dl,
@@ -24,4 +37,10 @@ td, th {
       margin-bottom: 0;
     }
   }
+}
+
+th {
+  font-weight: inherit;
+  text-align: inherit; // Matches default `<td>` alignment.
+  text-align: -webkit-match-parent; // Fix alignment for Safari.
 }

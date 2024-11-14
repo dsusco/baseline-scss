@@ -2,7 +2,20 @@ figure {
   margin: 0 0 var(--_);
 }
 
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle; // Remove gap between the bottom of their containers.
+}
+
 img {
   display: inline-block;
   max-width: 100%;
+}
+
+svg {
+  overflow: hidden; // Workaround for the SVG overflow bug in IE10/11.
 }

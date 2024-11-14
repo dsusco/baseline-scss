@@ -33,7 +33,7 @@ button,
   &:hover {
     --background_color: var(--background_color_hover, var(--gray_300));
     --border_color: var(--border_color_hover, var(--gray_800));
-    --color: var(--color_hover, var(--body_color));
+    --color: var(--color_hover);
   }
 
   &:focus {
@@ -55,7 +55,7 @@ button,
   }
 
   &:disabled {
-    --background_color: var(--background_color_disabled, var(--gray_200));
+    --background_color: var(--background_color_disabled);
     --border_color: var(--border_color_disabled, var(--gray_300));
     --color: var(--color_disabled, var(--gray_400));
 

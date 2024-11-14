@@ -44,6 +44,13 @@
   --destroy_background_color: #fcc;
   --destroy_border_color: #c33;
 
+  --valid_background_color: #cfc;
+  --valid_border_color: #3c3;
+  --warning_background_color: #ffc;
+  --warning_border_color: #fc3;
+  --invalid_background_color: #fcc;
+  --invalid_border_color: #c33;
+
   // Body
   --body_background_color: var(--white);
   --body_color: var(--black);

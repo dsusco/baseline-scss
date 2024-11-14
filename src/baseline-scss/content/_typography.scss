@@ -70,30 +70,37 @@ hr {
 }
 
 a {
-  --_color: var(--color, inherit)
+  --_color: var(--color, inherit);
+  --_text_decoration: var(--text_decoration, none);
 
   color: var(--_color);
+  text-decoration: var(--_text_decoration);
 
   &:link {
     --color: var(--link_color);
+    --text_decoration: var(--link_text_decoration);
   }
 
   &:visited {
     --color: var(--link_color_visited);
+   --text_decoration: var(--link_text_decoration_visited);
   }
 
   &[href]:hover {
     --color: var(--link_color_hover);
+   --text_decoration: var(--link_text_decoration_hover);
   }
 
   &:focus {
     --color: var(--link_color_focus);
+   --text_decoration: var(--link_text_decoration_focus);
 
     @include _.outline();
   }
 
   &[href]:active {
     --color: var(--link_color_active);
+   --text_decoration: var(--link_text_decoration_active);
   }
 
   &:not([href]):not([tabindex]):focus {

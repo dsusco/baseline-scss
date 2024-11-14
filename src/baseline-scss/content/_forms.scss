@@ -112,6 +112,15 @@ textarea {
     --border_color: var(--border_color_disabled, var(--gray_300));
     --color: var(--color_disabled, var(--gray_400));
   }
+
+  &[aria-activedescendant] {
+    outline: 0;
+  }
+
+  &[aria-invalid='true'] {
+    --background_color: var(--invalid_background_color);
+    --border_color: var(--invalid_border_color);
+  }
 }
 
 [type='color'],
@@ -130,10 +139,33 @@ textarea {
 [type='week'],
 input:not([type]),
 textarea {
+  --_placeholder_color: var(--placeholder_color, var(--gray_600));
+
+  &:not(:placeholder-shown):valid {
+    --border_color: var(--valid_border_color);
+    --invalid_background_color: var(--null);
+  }
+
+  &:not(:placeholder-shown):invalid {
+    --border_color: var(--invalid_border_color);
+  }
+
+  &:focus {
+    :placeholder-shown:required,
+    &:invalid {
+      --border_color: var(--warning_border_color);
+      --invalid_background_color: var(--null);
+    }
+  }
+
   &:read-only {
     --background_color: var(--background_color_read_only, var(--gray_200));
     --border_color: var(--border_color_read_only, var(--gray_300));
     --color: var(--color_read_only, var(--gray_400));
+  }
+
+  &::placeholder {
+    color: var(--_placeholder_color);
   }
 }
 

@@ -17,7 +17,7 @@ h4, ._h4,
 h5, ._h5,
 h6, ._h6 {
   font-family: var(--h_font_family);
-  font-weight: var(--font_weight_bold);
+  font-weight: var(--h_font_weight);
   margin-top: 0;
   margin-bottom: var(--_);
 
@@ -63,44 +63,41 @@ p, ._p {
 
 hr {
   border: 0;
-  border-top: .1rem solid var(--body_color);
+  border-top: var(--hr_border_size, .1rem) var(--hr_border_style, solid) var(--hr_border_color, var(--body_color));
   box-sizing: border-box;
-  height: var(--_);
+  height: var(--hr_height, var(--_));
   margin: 0;
 }
 
 a {
-  --_color: var(--color, inherit);
-  --_text_decoration: var(--text_decoration, none);
+  &:any-link {
+    --_link_color: var(--link_color);
+    --_link_text_decoration: var(--link_text_decoration);
 
-  color: var(--_color);
-  text-decoration: var(--_text_decoration);
+    color: var(--_link_color, #00e);
+    text-decoration: var(--_link_text_decoration, underline);
 
-  &:link {
-    --color: var(--link_color);
-    --text_decoration: var(--link_text_decoration);
-  }
+    &:visited {
+      --_link_color: var(--link_color_visited, var(--link_color, #528));
+      --_link_text_decoration: var(--link_text_decoration_visited, var(--link_text_decoration));
+    }
 
-  &:visited {
-    --color: var(--link_color_visited);
-   --text_decoration: var(--link_text_decoration_visited);
-  }
+    &:hover {
+      --_link_color: var(--link_color_hover, var(--link_color, #00f));
+      --_link_text_decoration: var(--link_text_decoration_hover, var(--link_text_decoration));
+    }
 
-  &[href]:hover {
-    --color: var(--link_color_hover);
-   --text_decoration: var(--link_text_decoration_hover);
-  }
+    &:focus {
+      @include _.outline();
 
-  &:focus {
-    --color: var(--link_color_focus);
-   --text_decoration: var(--link_text_decoration_focus);
+      --_link_color: var(--link_color_focus, var(--link_color));
+      --_link_text_decoration: var(--link_text_decoration_focus, var(--link_text_decoration));
+    }
 
-    @include _.outline();
-  }
-
-  &[href]:active {
-    --color: var(--link_color_active);
-   --text_decoration: var(--link_text_decoration_active);
+    &:active {
+      --_link_color: var(--link_color_active, var(--link_color, #f00));
+      --_link_text_decoration: var(--link_text_decoration_active, var(--link_text_decoration));
+    }
   }
 
   &:not([href]):not([tabindex]):focus {
@@ -119,7 +116,7 @@ abbr[title] {
 }
 
 mark {
-  background-color: #ff0;
+  background-color: var(--mark_background_color, #ff0);
 }
 
 small, ._small,

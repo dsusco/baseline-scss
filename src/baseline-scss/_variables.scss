@@ -15,13 +15,31 @@
   --font_family_sans: sans-serif;
   --font_family_serif: serif;
   --font_family_mono: monospace;
+  --h_font_family: var(--font_family_sans);
+  --h_font_weight: var(--font_weight_bold);
+  --code_font_family: var(--font_family_mono);
 
+  --h1_font_size: 3.6rem;
+  --h2_font_size: 3.0rem;
+  --h3_font_size: 2.4rem;
+  --h4_font_size: 2rem;
+  --h5_font_size: 1.6rem;
+  --h6_font_size: 1.2rem;
   --large_font_size: 125%;
   --small_font_size: 75%;
+  --code_font_size: 1.5rem;
 
   --font_weight_normal: normal;
   --font_weight_bold: bold;
   --font_weight_light: light;
+
+  --h1_line_height: 1;
+  --h2_line_height: 1.2;
+  --h3_line_height: 1.5;
+  --h4_line_height: 1.2;
+  --h5_line_height: 1.5;
+  --h6_line_height: 1;
+  --code_line_height: 1.6;
 
   // Colors
   --white:    #ffffff;
@@ -51,38 +69,10 @@
   --invalid_background_color: #fcc;
   --invalid_border_color: #c33;
 
-  // Body
+  // Body Defaults
   --body_background_color: var(--white);
   --body_color: var(--black);
   --body_font_family: var(--font_family_sans);
   --body_font_size: 1.6rem;
   --body_line_height: 1.5;
-
-  // Code
-  --code_font_family: var(--font_family_mono);
-  --code_font_size: 1.5rem;
-  --code_line_height: 1.6;
-
-  // Typography
-  --h_font_family: var(--font_family_sans);
-
-  --h1_font_size: 3.6rem;
-  --h2_font_size: 3.0rem;
-  --h3_font_size: 2.4rem;
-  --h4_font_size: 2rem;
-  --h5_font_size: 1.6rem;
-  --h6_font_size: 1.2rem;
-
-  --h1_line_height: 1;
-  --h2_line_height: 1.2;
-  --h3_line_height: 1.5;
-  --h4_line_height: 1.2;
-  --h5_line_height: 1.5;
-  --h6_line_height: 1;
-
-  --link_color: #00e;
-  --link_color_visited: #528;
-  --link_color_hover: #00f;
-  --link_color_focus: var(--link_color_hover);
-  --link_color_active: var(--link_color_hover);
 }

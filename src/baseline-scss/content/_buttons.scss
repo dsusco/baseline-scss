@@ -3,64 +3,86 @@
 button,
 [type='button'],
 [type='reset'],
-[type='submit'] {
-  --_background_color: var(--background_color, var(--gray_200));
-  --_border_color: var(--border_color, var(--gray_600));
-  --_border_radius: var(--border_radius, .3rem);
-  --_border_style: var(--border_style, solid);
-  --_border_width: var(--border_width, .1rem);
-  --_color: var(--color, inherit);
-  --_font_size: var(--font_size, inherit);
-  --_height: var(--height, calc(2 * var(--_)));
-  --_line_height: var(--line_height, 1);
-  --_padding: var(--padding, 0 .5em);
+[type='submit'],
+.button {
+  --_button_background_color: var(--button_background_color);
+  --_button_border_color: var(--button_border_color);
+  --_button_border_width: var(--button_border_width, .1rem);
+  --_button_color: var(--button_color);
 
-  background-color: var(--_background_color);
-  border-color: var(--_border_color);
-  border-radius: var(--_border_radius);
-  border-style: var(--_border_style);
-  border-width: var(--_border_width);
-  color: var(--_color);
-  font-size: var(--_font_size);
-  height: var(--_height);
-  line-height: var(--_line_height);
-  padding: var(--_padding);
-
-  &:not(:disabled) {
-    cursor: pointer; // Add 'hand' cursor to non-disabled button elements.
-  }
+  background-color: var(--_button_background_color, var(--gray_200));
+  border-color: var(--_button_border_color, var(--gray_600));
+  border-radius: var(--button_border_radius, .3rem);
+  border-style: var(--button_border_style, solid);
+  border-width: var(--_button_border_width);
+  color: var(--_button_color, var(--body_color));
+  display: var(--button_display, inline-block);
+  font-size: var(--button_font_size, var(--body_font_size));
+  font-weight: var(--button_font_weight, var(--font_weight_normal));
+  line-height: var(--button_line_height, calc(2 * (var(--_) - var(--_button_border_width))));
+  padding: var(--button_padding, 0 .5em);
+  text-decoration: var(--button_text-decoration, none);
+  white-space: var(--button_white_space, nowrap);
 
   &:hover {
-    --background_color: var(--background_color_hover, var(--gray_300));
-    --border_color: var(--border_color_hover, var(--gray_800));
-    --color: var(--color_hover);
+    --_button_background_color: var(--button_background_color_hover, var(--button_background_color, var(--gray_300)));
+    --_button_border_color: var(--button_border_color_hover, var(--button_border_color, var(--gray_800)));
+    --_button_color: var(--button_color_hover, var(--button_color));
   }
 
   &:focus {
-    --background_color: var(--background_color_focus);
-    --border_color: var(--border_color_focus);
-    --color: var(--color_focus);
-
-    @include _.outline();
+    --_button_background_color: var(--button_background_color_focus, var(--button_background_color));
+    --_button_border_color: var(--button_border_color_focus, var(--button_border_color, var(--gray_600)));
+    --_button_color: var(--button_color_focus, var(--button_color));
 
     &:not(:focus-visible) {
       outline: 0; // Explicitly remove focus outline in Chromium.
     }
   }
+}
 
-  &:active {
-    --background_color: var(--background_color_active, var(--gray_100));
-    --border_color: var(--border_color_active, var(--gray_500));
-    --color: var(--color_active);
+button:active,
+[type='button']:active,
+[type='reset']:active,
+[type='submit']:active,
+.button:has(:checked) {
+  --_button_background_color: var(--button_background_color_active, var(--button_background_color, var(--gray_100)));
+  --_button_border_color: var(--button_border_color_active, var(--button_border_color, var(--gray_500)));
+  --_button_color: var(--button_color_active, var(--button_color));
+}
+
+button:disabled,
+[type='button']:disabled,
+[type='reset']:disabled,
+[type='submit']:disabled,
+.button:has(:disabled),
+.button._disabled {
+  --_button_background_color: var(--button_background_color_disabled, var(--button_background_color));
+  --_button_border_color: var(--button_border_color_disabled, var(--button_border_color, var(--gray_300)));
+  --_button_color: var(--button_color_disabled, var(--button_color, var(--gray_400)));
+
+  pointer-events: none;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  &:not(:disabled) {
+    cursor: pointer; // Add 'hand' cursor to non-disabled button elements.
   }
+}
 
-  &:disabled {
-    --background_color: var(--background_color_disabled);
-    --border_color: var(--border_color_disabled, var(--gray_300));
-    --color: var(--color_disabled, var(--gray_400));
-
-    pointer-events: none;
+button:not(:disabled),
+.button:not(._disabled) {
+  &:focus {
+    @include _.outline();
   }
+}
+
+a.button {
+  --link_color: var(--_button_color, var(--body_color));
+  --link_text_decoration: var(--button_text-decoration, none);
 }
 
 [role='button'] {

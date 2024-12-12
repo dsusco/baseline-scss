@@ -1,9 +1,16 @@
-._clearfix {
-  &::after {
-    display: block;
-    clear: both;
-    content: '';
-  }
+@use 'baseline-scss/mixins' as _;
+
+._clear_left {
+  clear: left;
+}
+._clear_right {
+  clear: right;
+}
+
+._clearfix::after {
+  display: block;
+  clear: both;
+  content: '';
 }
 
 ._margin_bottom {
@@ -11,6 +18,13 @@
 }
 ._no_margin_bottom {
   margin-bottom: 0;
+}
+
+._pull_left {
+  float: left;
+}
+._pull_right {
+  float: right;
 }
 
 ._responsive_table_wrapper {
@@ -24,15 +38,7 @@
 
 ._sr_only,
 ._sr_only_focusable:not(:focus):not(:focus-within) {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  position: absolute;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 1px;
+  @include _.sr_only();
 }
 
 ._text_left {

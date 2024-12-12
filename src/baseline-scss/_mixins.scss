@@ -1,33 +1,6 @@
-@mixin after_border() {
-  position: relative;
-
-  &::after {
-    border-color: var(--after_border_color, var(--body_color));
-    border-radius: var(--after_border_radius, 0);
-    border-style: var(--after_border_style, solid);
-    border-width: var(--after_border_width, .1rem);
-    content: '';
-    inset: var(--after_border_inset, 0);
-    pointer-events: none;
-    position: absolute;
-    z-index: var(--after_border_z_index, auto);
-  }
-}
-
-@mixin before_border() {
-  position: relative;
-
-  &::before {
-    border-color: var(--before_border_color, var(--body_color));
-    border-radius: var(--before_border_radius, 0);
-    border-style: var(--before_border_style, solid);
-    border-width: var(--before_border_width, .1rem);
-    content: '';
-    inset: var(--before_border_inset, 0);
-    pointer-events: none;
-    position: absolute;
-    z-index: var(--before_border_z_index, 0);
-  }
+@mixin centered_container() {
+  margin-inline: auto;
+  max-width: var(--centered_container_max_width, 100%);
 }
 
 @mixin font_awesome($content: '') {
@@ -43,22 +16,50 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-@mixin centered_container() {
-  margin-inline: auto;
-  max-width: var(--centered_container_max_width, 100%);
-  position: relative;
+@mixin full_bleed() {
+  --_full_bleed_background_color: var(--full_bleed_background_color, var(--body_background_color));
 
-  &::before {
-    background-color: var(--centered_container_background_color, inherit);
-    content: '';
-    inset: var(--centered_container_inset, 0 -50vw);
-    pointer-events: none;
-    position: absolute;
-    z-index: var(--centered_container_z_index, -1);
-  }
+  background-color: var(--_full_bleed_background_color);
+  box-shadow: 50vmax 0 0 0 var(--_full_bleed_background_color),
+              -50vmax 0 0 0 var(--_full_bleed_background_color);
+}
+
+@mixin inset_border() {
+  --_inset_border_color: var(--inset_border_color, var(--body_color));
+  --_inset_border_block_color: var(--inset_border_block_color, var(--_inset_border_color));
+  --_inset_border_inline_color: var(--inset_border_inline_color, var(--_inset_border_color));
+  --_inset_border_top_color: var(--inset_border_top_color, var(--_inset_border_block_color));
+  --_inset_border_right_color: var(--inset_border_right_color, var(--_inset_border_inline_color));
+  --_inset_border_bottom_color: var(--inset_border_bottom_color, var(--_inset_border_block_color));
+  --_inset_border_left_color: var(--inset_border_left_color, var(--_inset_border_inline_color));
+
+  --_inset_border_width: var(--inset_border_width, 1px);
+  --_inset_border_block_width: var(--inset_border_block_width, var(--_inset_border_width));
+  --_inset_border_inline_width: var(--inset_border_inline_width, var(--_inset_border_width));
+  --_inset_border_top_width: var(--inset_border_top_width, var(--_inset_border_block_width));
+  --_inset_border_right_width: calc(-1 * var(--inset_border_right_width, var(--_inset_border_inline_width)));
+  --_inset_border_bottom_width: calc(-1 * var(--inset_border_bottom_width, var(--_inset_border_block_width)));
+  --_inset_border_left_width: var(--inset_border_left_width, var(--_inset_border_inline_width));
+
+  box-shadow: inset 0 var(--_inset_border_top_width) 0 0 var(--_inset_border_top_color),
+              inset var(--_inset_border_right_width) 0 0 0 var(--_inset_border_right_color),
+              inset 0 var(--_inset_border_bottom_width) 0 0 var(--_inset_border_bottom_color),
+              inset var(--_inset_border_left_width) 0 0 0 var(--_inset_border_left_color);
 }
 
 @mixin outline() {
   outline: var(--outline_width, .2rem) var(--outline_style, auto) var(--outline_color, #9cf);
   outline-offset: var(--outline_offset, .2rem);
+}
+
+@mixin sr_only() {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 1px;
 }

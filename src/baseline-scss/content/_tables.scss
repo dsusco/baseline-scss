@@ -26,7 +26,8 @@ thead th {
 }
 
 td, th {
-  padding: 0 .25em;
+  padding-block: var(--table_cell_padding_block, 0);
+  padding-inline: var(--table_cell_padding_inline, .25em);
   vertical-align: top;
 
   > dl,

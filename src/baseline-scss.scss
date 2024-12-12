@@ -1,7 +1,6 @@
-@use 'vendors/_include-media';
 @use 'vendors/normalize';
 
 @use 'baseline-scss/_variables';
 @use 'baseline-scss/_reboot';
-@use 'baseline-scss/_content';
+@use 'baseline-scss/content/' as content;
 @use 'baseline-scss/_helpers';

@@ -13,13 +13,9 @@ fieldset {
   margin: 0 0 var(--_);
   min-width: 0; // Behave like a standard block element.
   padding: var(--_) .5em;
-  position: relative;
 
   &:has(> legend:first-child) {
-    --after_border_inset: calc(-1 * var(--_)) 0 0;
-    --after_border_z_index: -1;
-
-    @include _.after_border();
+    @include _.inset_border();
   }
 }
 
@@ -69,48 +65,44 @@ textarea {
 input:not([type]),
 select,
 textarea {
-  --_background_color: var(--background_color, var(--body_background_color));
-  --_border_color: var(--border_color, var(--gray_600));
-  --_border_radius: var(--border_radius, 0);
-  --_border_style: var(--border_style, solid);
-  --_border_width: var(--border_width, .1rem);
-  --_color: var(--color, inherit);
-  --_font_size: var(--font_size, inherit);
-  --_line_height: var(--line_height, 1);
-  --_padding: var(--padding, 0 .25em);
+  --_input_background_color: var(--input_background_color);
+  --_input_border_color: var(--input_border_color);
+  --_input_border_width: var(--input_border_width, .1rem);
+  --_input_color: var(--input_color);
 
-  background-color: var(--_background_color);
-  border-color: var(--_border_color);
-  border-radius: var(--_border_radius);
-  border-style: var(--_border_style);
-  border-width: var(--_border_width);
-  color: var(--_color);
-  font-size: var(--_font_size);
-  line-height: var(--_line_height);
-  padding: var(--_padding);
+  background-color: var(--_input_background_color, var(--body_background_color));
+  border-color: var(--_input_border_color, var(--gray_600));
+  border-radius: var(--input_border_radius, 0);
+  border-style: var(--input_border_style, solid);
+  border-width: var(--_input_border_width);
+  color: var(--_input_color, var(--body_color));
+  font-size: var(--input_font_size, var(--body_font_size));
+  font-weight: var(--input_font_weight, var(--font_weight_normal));
+  line-height: var(--input_line_height, calc(2 * (var(--_) - var(--_input_border_width))));
+  padding: var(--input_padding, 0 .25em);
 
   &:hover {
-    --background_color: var(--background_color_hover);
-    --border_color: var(--border_color_hover, var(--gray_800));
-    --color: var(--color_hover);
+    --_input_background_color: var(--input_background_color_hover, var(--input_background_color));
+    --_input_border_color: var(--input_border_color_hover, var(--input_border_color, var(--gray_800)));
+    --_input_color: var(--input_color_hover, var(--input_color));
   }
 
   &:focus {
-    --background_color: var(--background_color_focus);
-    --border_color: var(--border_color_focus);
-    --color: var(--color_focus);
+    --_input_background_color: var(--input_background_color_focus, var(--input_background_color));
+    --_input_border_color: var(--input_border_color_focus, var(--input_border_color));
+    --_input_color: var(--input_color_focus, var(--input_color));
   }
 
   &:active {
-    --background_color: var(--background_color_active);
-    --border_color: var(--border_color_active, var(--gray_500));
-    --color: var(--color_active);
+    --_input_background_color: var(--input_background_color_active, var(--input_background_color));
+    --_input_border_color: var(--input_border_color_active, var(--input_border_color, var(--gray_500)));
+    --_input_color: var(--input_color_active, var(--input_color));
   }
 
   &:disabled {
-    --background_color: var(--background_color_disabled, var(--gray_200));
-    --border_color: var(--border_color_disabled, var(--gray_300));
-    --color: var(--color_disabled, var(--gray_400));
+    --_input_background_color: var(--input_background_color_disabled, var(--input_background_color, var(--gray_200)));
+    --_input_border_color: var(--input_border_color_disabled, var(--input_border_color, var(--gray_300)));
+    --_input_color: var(--input_color_disabled, var(--input_color, var(--gray_400)));
   }
 
   &[aria-activedescendant] {
@@ -118,8 +110,8 @@ textarea {
   }
 
   &[aria-invalid='true'] {
-    --background_color: var(--invalid_background_color);
-    --border_color: var(--invalid_border_color);
+    --_input_background_color: var(--input_background_color_invalid, var(--invalid_background_color));
+    --_input_border_color: var(--input_border_color_invalid, var(--invalid_border_color));
   }
 }
 
@@ -139,33 +131,29 @@ textarea {
 [type='week'],
 input:not([type]),
 textarea {
-  --_placeholder_color: var(--placeholder_color, var(--gray_600));
-
-  &:not(:placeholder-shown):valid {
-    --border_color: var(--valid_border_color);
-    --invalid_background_color: var(--null);
-  }
-
-  &:not(:placeholder-shown):invalid {
-    --border_color: var(--invalid_border_color);
-  }
-
-  &:focus {
-    :placeholder-shown:required,
-    &:invalid {
-      --border_color: var(--warning_border_color);
-      --invalid_background_color: var(--null);
-    }
-  }
-
-  &:read-only {
-    --background_color: var(--background_color_read_only, var(--gray_200));
-    --border_color: var(--border_color_read_only, var(--gray_300));
-    --color: var(--color_read_only, var(--gray_400));
+  &:focus:invalid {
+    --_input_background_color: var(--input_background_color_warning, var(--warning_background_color));
+    --_input_border_color: var(--input_border_color_warningd, var(--warning_border_color));
   }
 
   &::placeholder {
-    color: var(--_placeholder_color);
+    color: var(--input_placeholder_color, var(--gray_600));
+  }
+
+  &:read-only {
+    --_input_background_color: var(--input_background_color_read_only, var(--input_background_color, var(--gray_200)));
+    --_input_border_color: var(--input_border_color_read_only, var(--input_border_color, var(--gray_300)));
+    --_input_color: var(--input_color_read_only, var(--input_color, var(--gray_400)));
+  }
+
+  &:user-invalid {
+    --_input_background_color: var(--input_background_color_invalid, var(--invalid_background_color));
+    --_input_border_color: var(--input_border_color_invalid, var(--invalid_border_color));
+  }
+
+  &:user-valid {
+    --_input_background_color: var(--input_background_color_valid, var(--valid_background_color));
+    --_input_border_color: var(--input_border_color_valid, var(--valid_border_color));
   }
 }
 
@@ -178,6 +166,8 @@ textarea {
 }
 
 select {
+  height: var(--select_height, calc(2 * var(--_)));
+  margin-top: calc(var(--_input_border_width) / -2);
   word-wrap: normal; // Remove the inheritance of word-wrap in Safari.
 
   &:disabled {
@@ -186,8 +176,8 @@ select {
 }
 
 textarea {
-  --line_height: var(--body_line_height);
-  --padding: calc(var(--_half_floor) - var(--_border_width)) .25em calc(var(--_half_ceil) - var(--_border_width));
+  --input_line_height: var(--body_line_height);
+  --input_padding: calc(var(--_half) - var(--_input_border_width)) .25em;
 
   height: auto;
   resize: vertical; // Don't break its (horizontal) containers.

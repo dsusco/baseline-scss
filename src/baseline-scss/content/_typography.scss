@@ -88,10 +88,14 @@ a {
     }
 
     &:focus {
-      @include _.outline();
-
       --_link_color: var(--link_color_focus, var(--link_color));
       --_link_text_decoration: var(--link_text_decoration_focus, var(--link_text_decoration));
+
+      @include _.outline();
+
+      &._disabled {
+        outline: 0;
+      }
     }
 
     &:active {
@@ -110,16 +114,11 @@ abbr[title] {
   text-decoration-skip-ink: none; // Prevent the text-decoration to be skipped.
 }
 
-._large {
-  font-size: var(--font_size_large);
-  line-height: 1;
-}
-
 mark {
   background-color: var(--mark_background_color, #ff0);
 }
 
-small, ._small,
+small,
 sub,
 sup {
   font-size: var(--font_size_small);

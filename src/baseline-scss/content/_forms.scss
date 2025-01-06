@@ -99,12 +99,6 @@ textarea {
     --_input_color: var(--input_color_active, var(--input_color));
   }
 
-  &:disabled {
-    --_input_background_color: var(--input_background_color_disabled, var(--input_background_color, var(--gray_200)));
-    --_input_border_color: var(--input_border_color_disabled, var(--input_border_color, var(--gray_300)));
-    --_input_color: var(--input_color_disabled, var(--input_color, var(--gray_400)));
-  }
-
   &[aria-activedescendant] {
     outline: 0;
   }
@@ -154,6 +148,30 @@ textarea {
   &:user-valid {
     --_input_background_color: var(--input_background_color_valid, var(--valid_background_color));
     --_input_border_color: var(--input_border_color_valid, var(--valid_border_color));
+  }
+}
+
+[type='color'],
+[type='date'],
+[type='datetime'],
+[type='datetime-local'],
+[type='email'],
+[type='month'],
+[type='number'],
+[type='password'],
+[type='search'],
+[type='tel'],
+[type='text'],
+[type='time'],
+[type='url'],
+[type='week'],
+input:not([type]),
+select,
+textarea {
+  &:disabled { // put here to override :read-only
+    --_input_background_color: var(--input_background_color_disabled, var(--input_background_color, var(--gray_200)));
+    --_input_border_color: var(--input_border_color_disabled, var(--input_border_color, var(--gray_300)));
+    --_input_color: var(--input_color_disabled, var(--input_color, var(--gray_400)));
   }
 }
 

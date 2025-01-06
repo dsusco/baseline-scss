@@ -57,17 +57,23 @@
 
   --create_background_color: #cfc;
   --create_border_color: #3c3;
+  --create_color: #3c3;
   --update_background_color: #cff;
   --update_border_color: #3cc;
+  --update_color: #3cc;
   --destroy_background_color: #fcc;
   --destroy_border_color: #c33;
+  --destroy_color: #c33;
 
   --valid_background_color: #cfc;
   --valid_border_color: #3c3;
+  --valid_color: #3c3;
   --warning_background_color: #ffc;
   --warning_border_color: #fc3;
+  --warning_color: #fc3;
   --invalid_background_color: #fcc;
   --invalid_border_color: #c33;
+  --invalid_color: #c33;
 
   // Body Defaults
   --body_background_color: var(--white);

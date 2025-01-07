@@ -19,7 +19,6 @@
   },
   "devDependencies": {
     "animate.css": "^4.1.1",
-    "include-media": "^2.0.0",
     "normalize.css": "^8.0.1"
   },
   "style": "src/baseline-scss.scss"
